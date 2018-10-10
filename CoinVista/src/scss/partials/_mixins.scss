@@ -1,0 +1,74 @@
+//background-images
+@mixin bg-img($background, $size) {
+  background: $background center no-repeat;
+  background-size: $size;
+}
+
+//circle
+@mixin circle($width, $height, $radius, $thickness, $border-color) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+  border: $thickness solid $border-color;
+}
+
+//placeholder color changes
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+  &:-moz-placeholder {
+    @content
+  }
+  &::-moz-placeholder {
+    @content
+  }
+  &:-ms-input-placeholder {
+    @content
+  }
+}
+
+//normal transition
+@mixin transition($transition-action, $transition-time) {
+  transition: $transition-action $transition-time;
+  -webkit-transition: $transition-action $transition-time;
+  -moz-transition: $transition-action $transition-time;
+  -o-transition: $transition-action $transition-time;
+}
+
+//rotation
+@mixin rotation($deg) {
+  transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -o-transform: rotate($deg);
+}
+
+//for responsive
+@mixin respond-to($media) {
+  @if $media == xs-screen {
+    @media only screen and (max-width: $break-xs - 1px) {
+      @content;
+    }
+  }
+  @if $media == sm-screen {
+    @media only screen and (max-width: $break-sm - 1px) {
+      @content;
+    }
+  }
+  @if $media == md-screen {
+    @media only screen and (max-width: $break-md - 1px) {
+      @content;
+    }
+  }
+  @if $media == lg-screen {
+    @media only screen and (max-width: $break-lg - 1px) {
+      @content;
+    }
+  }
+  @if $media == xl-screen {
+    @media only screen and (max-width: $break-xl - 1px) {
+      @content;
+    }
+  }
+}
