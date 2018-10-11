@@ -22,7 +22,7 @@ gulp.task('scss', function(){
         }))
 });
 
-//html
+//for html
 gulp.task('html', function(){
     return gulp.src('src/html/*.html')
         .pipe(gulp.dest('dist'))
