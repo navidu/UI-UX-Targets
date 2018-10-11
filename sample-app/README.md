@@ -164,8 +164,19 @@ yarn add gulp --dev
 - node_modules: All packages in this folder
 - package.json: All dependency for build node_modules are in this json
 
-## Step - 4 Create gulpfile.js file
+## Create gulpfile.js file
 ### Write my first gulp task
+```JavaScript
+var gulp = require('gulp'); //variable
+```
+- The require statement tells Node to look into the node_modules folder for a package named gulp. Once the package is found, we assign its contents to the variable gulp
+```JavaScript
+//function for build the tasks
+gulp.task('task-name', function() {
+  // Stuff here
+});
+```
+
 ```JavaScript
 var gulp = require('gulp'); //variable
 
