@@ -254,5 +254,19 @@ gulp.task('watch', function(){
 ```
 - If you run the  watch task, it is waiting for another changes of your files like this.
 ![project-build](doc/img/watch.png)
-- If there is an update on your files it will update the files in dist folder.
+- If there is an update on your files it will update the files in dist folder. (Did a changes of scss file)
 ![project-build](doc/img/watch-compiled.png)
+
+## Step - 5 Write a task for HTML
+- Create an `index.html` file in html folder under src folder.
+- Haven't any gulp plugins for generate HTML. So directly put the `.html` files to dist folder.
+- Default `.html` file is `index.html`.
+```JavaScript
+gulp.task('html', function(){
+    return gulp.src('src/html/*.html')
+        .pipe(gulp.dest('dist'));
+});
+```
+- If run this `html` task, dist folder will create a `html` folder and `index.html` file is will be there.
+- So this file also a more changeable file and have to add it to the watch task.
+- So first build `html` task and then build `watch` task.
