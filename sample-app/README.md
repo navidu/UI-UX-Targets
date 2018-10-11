@@ -258,8 +258,8 @@ gulp.task('watch', function(){
 ![project-build](doc/img/watch-compiled.png)
 
 ## Step - 5 Write a task for HTML
-- Create an `index.html` file in html folder under src folder.
-- Haven't any gulp plugins for generate HTML. So directly put the `.html` files to dist folder.
+- Create an `index.html` file in html folder under `src` folder.
+- Haven't any gulp plugins for generate HTML. So directly put the `.html` files to `dist` folder.
 - Default `.html` file is `index.html`.
 ```JavaScript
 gulp.task('html', function(){
@@ -267,6 +267,44 @@ gulp.task('html', function(){
         .pipe(gulp.dest('dist'));
 });
 ```
-- If run this `html` task, dist folder will create a `html` folder and `index.html` file is will be there.
-- So this file also a more changeable file and have to add it to the watch task.
+- If run this `html` task, `dist` folder will create a `html` folder and `index.html` file is will be there.
+- So this file also a more changeable file and have to add it to the `watch` task.
 - So first build `html` task and then build `watch` task.
+
+## Step - 6 Create the tasks build function
+- Now, we have three `gulp` tasks.
+- We have to build task by task, First `scss` task, `html` task and last `watch` task.
+- If we have more tasks, it is hard to run. So create a `build` task to build all tasks in the project.
+```JavaScript
+var runSequence = require('run-sequence'); // need to run all seguence
+gulp.task('build', function(callback){
+    runSequence(
+        ['scss', 'html']
+    );
+});
+```
+- Install `run-sequence` plugin as a dev dependency using:
+```shell
+npm install run-sequence  --save-dev
+```
+- `build` task is for build the `scss` or `js` or `html` or other things to build the project.
+- All the building task are in an array.
+- `watch` task is not build any thing. So now, first run `build` task and the run `watch` task.
+
+## Step - 7 Create a new `dist` folder when project `build`
+- When the `watch` task running, code will override on the old code. Some time it will occurred the errors.
+- So we have to create a task for clear the `dist` folder when project build
+```JavaScript
+var del = require('del');//delete dist folder
+gulp.task('clean:dist', function () {
+    return del.sync('dist');
+});
+```
+- And change your `build` function like this:
+```JavaScript
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html']
+    );
+});
+```
+- This `build` function run the `clean:dist` function and the other tasks in the array.

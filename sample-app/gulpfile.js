@@ -35,6 +35,17 @@ gulp.task('watch', function(){
     gulp.watch('src/html/*.html', ['html']);
 });
 
+//clear the old dist folder
+gulp.task('clean:dist', function () {
+    return del.sync('dist');
+});
+
+//gulp build
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html']
+    );
+});
+
 //for run default gulp
 //gulp.task('default', function (callback) {
 //    runSequence(['watch'],
