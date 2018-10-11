@@ -5,8 +5,8 @@
   "readme": "README.md",
   "author": "Navidu Thisara Dillimuni - ndi",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/navidu/UI-UX-Targets"
+    "type": "git",
+    "url": "https://github.com/navidu/UI-UX-Targets"
   },
   "license": "MIT",
   "devDependencies": {

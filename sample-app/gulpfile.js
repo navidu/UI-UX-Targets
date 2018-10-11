@@ -3,7 +3,8 @@
  */
 var gulp = require('gulp');
 var sass = require('gulp-sass'); //requires the gulp-sass plugin
-var runSequence = require('run-sequence');
+var runSequence = require('run-sequence'); // need to run all sequence
+var del = require('del');//delete dist folder
 
 //sample task
 gulp.task('hello', function(){

@@ -276,7 +276,7 @@ gulp.task('html', function(){
 - We have to build task by task, First `scss` task, `html` task and last `watch` task.
 - If we have more tasks, it is hard to run. So create a `build` task to build all tasks in the project.
 ```JavaScript
-var runSequence = require('run-sequence'); // need to run all seguence
+var runSequence = require('run-sequence'); // need to run all sequence
 gulp.task('build', function(callback){
     runSequence(
         ['scss', 'html']
@@ -300,6 +300,10 @@ gulp.task('clean:dist', function () {
     return del.sync('dist');
 });
 ```
+- Install `del` plugin as a dev dependency using for the clear folder:
+```shell
+npm install del --save-dev
+```
 - And change your `build` function like this:
 ```JavaScript
 gulp.task('build', function(callback){
@@ -307,4 +311,4 @@ gulp.task('build', function(callback){
     );
 });
 ```
-- This `build` function run the `clean:dist` function and the other tasks in the array.
+- This `build` function run the `clean:dist` function as well as other tasks in the array.
