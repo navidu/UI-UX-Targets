@@ -3,7 +3,7 @@
 - Fallow this steps to build your web application.
 - In here, some of task describe with points
 
-## Step -1 Creating a project
+## Step -1 Create a project
 - First create a project using npm
 ```shell
 npm init
@@ -102,6 +102,30 @@ yarn remove [package-name]@[version-if-have]
 ```
 ```shell
 yarn remove gulp@4.0
+```
+
+## Dependencies
+- There are three types of dependencies.
+    - dev
+    - peer
+    - optional
+- Mainly we using dev dependency as well.
+- For our final output, If we no need some of packages such as, gulp, gulp-sass etc. save in the dev dependency. So we use this command for that.
+- Refer Step - 2 Install Gulp for the example
+- npm:
+```shell
+npm install [package-name] --save-dev
+```
+```shell
+npm install [package-name]@[version-or-tag]  --save-dev
+```
+
+- yarn:
+```shell
+yarn add [package-name] --dev
+```
+```shell
+yarn add [package-name]@[version-or-tag] --dev
 ```
 
 ## Step - 2 Install Gulp
