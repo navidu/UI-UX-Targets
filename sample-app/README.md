@@ -104,7 +104,7 @@ yarn remove [package-name]@[version-if-have]
 yarn remove gulp@4.0
 ```
 
-### Step - 2 Install Gulp
+## Step - 2 Install Gulp
 - npm:
 ```shell
 npm install gulp --save-dev
