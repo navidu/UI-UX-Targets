@@ -169,7 +169,7 @@ yarn add gulp --dev
 ```JavaScript
 var gulp = require('gulp'); //variable
 ```
-- The require statement tells Node to look into the node_modules folder for a package named gulp. Once the package is found, we assign its contents to the variable gulp
+- The require statement tells Node to look into the `node_modules` folder for a package named `gulp`. Once the package is found, we assign its contents to the variable `gulp`
 ```JavaScript
 //function for build the tasks
 gulp.task('task-name', function() {
@@ -178,8 +178,6 @@ gulp.task('task-name', function() {
 ```
 
 ```JavaScript
-var gulp = require('gulp'); //variable
-
 //function for build the tasks
 gulp.task('task-name', function() {
   // Stuff here
