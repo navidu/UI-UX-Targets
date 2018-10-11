@@ -187,3 +187,14 @@ gulp.task('hello', function() {
 
 - Your out come will be like this:
 ![project-build](doc/img/hello-navidu.png)
+
+```JavaScript
+gulp.task('task-name', function () {
+  return gulp.src('source-files') // Get source files with gulp.src
+    .pipe(aGulpPlugin()) // Sends it through a gulp plugin
+    .pipe(gulp.dest('destination')) // Outputs the file in the destination folder
+})
+```
+
+- As you can see, a real task takes in two additional gulp methods — `gulp.src` and `gulp.dest`.
+- `gulp.src` tells the Gulp task what files to use for the task, while `gulp.dest` tells Gulp where to output the files once the task is completed.
