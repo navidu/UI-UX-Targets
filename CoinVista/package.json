@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This is sample widgets of CoinVista application",
   "readme": "README.md",
-  "main": "index.js",
   "author": "Navidu Thisara Dillimuni - ndi",
   "repository": {
     "type" : "git",
