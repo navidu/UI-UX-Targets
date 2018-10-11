@@ -355,7 +355,7 @@ gulp.task('html', function(){
         }));
 });
 ```
--Because of when some changes on the files, the browser will refresh automatically.
+- Because of when some changes on the files, the browser will refresh automatically.
 - But please remember, when you do some changes on yor files, this browser never automatically refresh for the changes. For the new changes, you have to run `watch` task.
 
 ## Step - 9 Create th default task
