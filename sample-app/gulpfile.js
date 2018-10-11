@@ -16,19 +16,19 @@ gulp.task('hello', function(){
 gulp.task('scss', function(){
     return gulp.src('src/scss/**/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('dist/css'));
-        //.pipe(browserSync.reload({
-        //    stream:true
-        //}))
+        .pipe(gulp.dest('dist/css'))
+        .pipe(browserSync.reload({
+            stream:true
+        }))
 });
 
 //html
 gulp.task('html', function(){
     return gulp.src('src/html/*.html')
-        .pipe(gulp.dest('dist'));
-        //.pipe(browserSync.reload({
-        //    stream: true
-        //}));
+        .pipe(gulp.dest('dist'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 //watch function for the changes
@@ -59,7 +59,7 @@ gulp.task('browserSync', function(){
 
 //for run default gulp
 gulp.task('default', function (callback) {
-    runSequence(['watch', 'browserSync'],
+    runSequence(['browserSync', 'watch'],
         callback
     );
 });

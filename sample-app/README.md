@@ -315,7 +315,7 @@ gulp.task('build', function(callback){
 ```
 - When you run `build` function run the `clean:dist` function as well as other tasks in the array.
 
-## Step - 8 Create a auto browser refresh task
+## Step - 8 Create a task for auto browser refreshing
 - This is an additional one for the browser refreshing after each and every changes.
 ```JavaScript
 var browserSync = require('browser-sync').create(); //for the browser sync
@@ -334,4 +334,37 @@ gulp.task('browserSync', function(){
 npm install browser-sync --save-dev
 ```
 - If you run the `browserSync` task, you can watch a new tab on your default browser of the `index.html`.
+- Also, you have to change your `scss` and `html` tasks like this:
+```JavaScript
+//for css
+gulp.task('scss', function(){
+    return gulp.src('src/scss/**/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'))
+        .pipe(browserSync.reload({
+            stream:true
+        }))
+});
+
+//html
+gulp.task('html', function(){
+    return gulp.src('src/html/*.html')
+        .pipe(gulp.dest('dist'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+```
+-Because of when some changes on the files, the browser will refresh automatically.
 - But please remember, when you do some changes on yor files, this browser never automatically refresh for the changes. For the new changes, you have to run `watch` task.
+
+## Step - 9 Create th default task
+- Now we can identify our default task must be `watch` and `browserSync` tasks.
+- So or default task is like this:
+```JavaScript
+gulp.task('default', function (callback) {
+    runSequence(['watch', 'browserSync'],
+        callback
+    );
+});
+```
