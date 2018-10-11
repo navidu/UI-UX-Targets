@@ -199,9 +199,9 @@ gulp.task('task-name', function () {
 - As you can see, a real task takes in two additional gulp methods — `gulp.src` and `gulp.dest`.
 - `gulp.src` tells the Gulp task what files to use for the task, while `gulp.dest` tells Gulp where to output the files once the task is completed.
 
-## Step - 4 write a task for SCSS
+## Step - 4 Write a task for SCSS
 
-- Install sass:
+- Install sass using npm:
 ```shell
 npm install gulp-sass --save-dev
 ```
@@ -216,7 +216,7 @@ gulp.task('scss', function(){
 });
 ```
 - Run scss task using `gulp scss`
-
+- You have a new folder call dist and under that folder have css folder with style.css
 - Now you have new folder call dist and your file order will be like this
 
 ```puml
@@ -245,3 +245,10 @@ gulp.task('scss', function(){
 - `!not-me.scss` : not execute
 -  `*.+(scss|sass)` : multiple pattern from root folder (`.scss` files or `.sass` files)
 
+## Step - 5 Watching changeable files changes
+- Write a function for watch task. It go and check every changeable files such as custom JavaScripts, SCSS and HTML file changes and update.
+```JavaScript
+gulp.task('watch', function(){
+    gulp.watch('src/scss/**/*.scss', ['scss']);
+});
+```

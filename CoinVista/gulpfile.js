@@ -56,7 +56,7 @@ gulp.task('hello', function(){
 //});
 
 //css
-gulp.task('css', function(){
+gulp.task('scss', function(){
     //take vendor css
     var vendorStreamCss = gulp.src(['node_modules/bootstrap/scss/bootstrap.scss'])
         .pipe(sass())
@@ -133,7 +133,7 @@ gulp.task('browserSync', function(){
 //watch function for the changes
 //browserSync and scss must be completed before run the watch task
 gulp.task('watch', function(){
-    gulp.watch('src/scss/**/*.scss', ['css']);
+    gulp.watch('src/scss/**/*.scss', ['scss']);
     gulp.watch('src/js/**/*.js', ['js']);
     gulp.watch('src/html/*.html', ['html']);
 });
@@ -152,7 +152,7 @@ gulp.task('cache:clear', function (callback) {
 //gulp build
 gulp.task('build', function(callback){
     runSequence('clean:dist',
-        ['css', 'js', 'html', 'fonts', 'images']
+        ['scss', 'js', 'html', 'fonts', 'images']
     );
 });
 
