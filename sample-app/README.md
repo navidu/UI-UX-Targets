@@ -167,8 +167,9 @@ yarn add gulp --dev
 ## Step - 4 Create gulpfile.js file
 ### Write my first gulp task
 ```JavaScript
-var gulp = require('gulp');
+var gulp = require('gulp'); //variable
 
+//function for build the tasks
 gulp.task('task-name', function() {
   // Stuff here
 });
