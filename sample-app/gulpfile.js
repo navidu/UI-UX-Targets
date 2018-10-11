@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass'); //requires the gulp-sass plugin
 var runSequence = require('run-sequence'); // need to run all sequence
 var del = require('del');//delete dist folder
+var browserSync = require('browser-sync').create(); //for the browser sync
 
 //sample task
 gulp.task('hello', function(){
@@ -47,9 +48,18 @@ gulp.task('build', function(callback){
     );
 });
 
+//for browser sync
+gulp.task('browserSync', function(){
+    browserSync.init({
+        server:{
+            baseDir: 'dist'
+        }
+    })
+});
+
 //for run default gulp
-//gulp.task('default', function (callback) {
-//    runSequence(['watch'],
-//        callback
-//    );
-//});
+gulp.task('default', function (callback) {
+    runSequence(['watch', 'browserSync'],
+        callback
+    );
+});

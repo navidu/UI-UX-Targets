@@ -277,6 +277,7 @@ gulp.task('html', function(){
 - If we have more tasks, it is hard to run. So create a `build` task to build all tasks in the project.
 ```JavaScript
 var runSequence = require('run-sequence'); // need to run all sequence
+
 gulp.task('build', function(callback){
     runSequence(
         ['scss', 'html']
@@ -296,11 +297,12 @@ npm install run-sequence  --save-dev
 - So we have to create a task for clear the `dist` folder when project build
 ```JavaScript
 var del = require('del');//delete dist folder
+
 gulp.task('clean:dist', function () {
     return del.sync('dist');
 });
 ```
-- Install `del` plugin as a dev dependency using for the clear folder:
+- Install `del` plugin as a dev dependency use for clearing the folder:
 ```shell
 npm install del --save-dev
 ```
@@ -311,4 +313,25 @@ gulp.task('build', function(callback){
     );
 });
 ```
-- This `build` function run the `clean:dist` function as well as other tasks in the array.
+- When you run `build` function run the `clean:dist` function as well as other tasks in the array.
+
+## Step - 8 Create a auto browser refresh task
+- This is an additional one for the browser refreshing after each and every changes.
+```JavaScript
+var browserSync = require('browser-sync').create(); //for the browser sync
+
+gulp.task('browserSync', function(){
+    browserSync.init({
+        server:{
+            baseDir: 'dist'
+        }
+    })
+});
+```
+- Browser Sync works with Gulp, so we don't have to use a plugin.
+- Install `browser-sync` as a dev dependency use for clearing the folder:
+```shell
+npm install browser-sync --save-dev
+```
+- If you run the `browserSync` task, you can watch a new tab on your default browser of the `index.html`.
+- But please remember, when you do some changes on yor files, this browser never automatically refresh for the changes. For the new changes, you have to run `watch` task.
