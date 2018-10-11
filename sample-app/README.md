@@ -198,3 +198,13 @@ gulp.task('task-name', function () {
 
 - As you can see, a real task takes in two additional gulp methods — `gulp.src` and `gulp.dest`.
 - `gulp.src` tells the Gulp task what files to use for the task, while `gulp.dest` tells Gulp where to output the files once the task is completed.
+
+## Step - 4 write a task for css
+
+```JavaScript
+gulp.task('scss', function(){
+    return gulp.src('src/scss/**/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'))
+});
+```
