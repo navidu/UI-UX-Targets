@@ -143,7 +143,7 @@ yarn add gulp --dev
 ## Step - 3 Determining Folder Structure
 - Create your folder structure like this
 
-```html
+```puml
     |-sample-app
       |- src/
           |- scss/
