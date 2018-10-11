@@ -140,16 +140,25 @@ yarn add gulp --dev
 ```
 - After this, gulp folder install in to the package under node_module folder.
 
+## Step - 3 Determining Folder Structure
+- Create your folder structure like this
+
 ```html
-  |- app/
-      |- css/
-      |- fonts/
-      |- images/
-      |- index.html
-      |- js/
+  |- src/
       |- scss/
-  |- dist/
+        |-partials
+        |-style.scss
+      |- fonts/
+      |- img/
+      |- html/
+        |-partials
+        |-index.html
+      |- js/
   |- gulpfile.js
   |- node_modules/
   |- package.json
 ```
+- src: This is the source folder of application. All the source file for build the application is in this folder.
+- gulpfile.js: All gulp task is in this java script
+- node_modules: All packages in this folder
+- package.json: ALl dependency for build node_modules are in this json
