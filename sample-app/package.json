@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/navidu/UI-UX-Targets/issues"
   },
-  "homepage": "https://github.com/navidu/UI-UX-Targets#readme"
+  "homepage": "https://github.com/navidu/UI-UX-Targets#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }

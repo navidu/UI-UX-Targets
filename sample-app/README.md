@@ -106,9 +106,9 @@ yarn remove gulp@4.0
 
 ## Dependencies
 - There are three types of dependencies.
-    - dev
-    - peer
-    - optional
+    - --dev
+    - --peer
+    - --optional
 - Mainly we using dev dependency as well.
 - For our final output, If we no need some of packages such as, gulp, gulp-sass etc. save in the dev dependency. So we use this command for that.
 - Refer Step - 2 Install Gulp for the example
@@ -137,4 +137,19 @@ npm install gulp --save-dev
 - yarn:
 ```shell
 yarn add gulp --dev
+```
+- After this, gulp folder install in to the package under node_module folder.
+
+```html
+  |- app/
+      |- css/
+      |- fonts/
+      |- images/
+      |- index.html
+      |- js/
+      |- scss/
+  |- dist/
+  |- gulpfile.js
+  |- node_modules/
+  |- package.json
 ```
