@@ -144,21 +144,32 @@ yarn add gulp --dev
 - Create your folder structure like this
 
 ```html
-  |- src/
-      |- scss/
-        |-partials
-        |-style.scss
-      |- fonts/
-      |- img/
-      |- html/
-        |-partials
-        |-index.html
-      |- js/
-  |- gulpfile.js
-  |- node_modules/
-  |- package.json
+    |-sample-app
+      |- src/
+          |- scss/
+            |-partials
+            |-style.scss
+          |- fonts/
+          |- img/
+          |- html/
+            |-partials
+            |-index.html
+          |- js/
+      |- gulpfile.js
+      |- node_modules/
+      |- package.json
 ```
 - src: This is the source folder of application. All the source file for build the application is in this folder.
 - gulpfile.js: All gulp task is in this java script
 - node_modules: All packages in this folder
-- package.json: ALl dependency for build node_modules are in this json
+- package.json: All dependency for build node_modules are in this json
+
+## Step - 4 Create gulpfile.js file
+### Write my first gulp task
+```JavaScript
+var gulp = require('gulp');
+
+gulp.task('task-name', function() {
+  // Stuff here
+});
+```
