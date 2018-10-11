@@ -252,3 +252,7 @@ gulp.task('watch', function(){
     gulp.watch('src/scss/**/*.scss', ['scss']);
 });
 ```
+- If you run the  watch task, it is waiting for another changes of your files like this.
+![project-build](doc/img/watch.png)
+- If there is an update on your files it will update the files in dist folder.
+![project-build](doc/img/watch-compiled.png)
