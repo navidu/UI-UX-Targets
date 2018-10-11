@@ -1,0 +1,34 @@
+//color
+$black: #000000;
+$white: #ffffff;
+$primary-green: #00ff67;
+$primary-red: #ff0000;
+
+//not change
+$facebook:#3b579d;
+$twitter:#1da1f3;
+$telegram:#20a0e1;
+$video:#ff0000;
+
+//fonts
+$primary-font: 'OpenSans', sans-serif;
+$primary-font-url: url('../fonts/OpenSans-Regular.ttf') format("truetype");
+
+//for media screens break points
+$break-xs: 320px;
+$break-sm: 480px;
+$break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+
+//second level
+$body-bg-color: $black;
+
+$widget-border: $white;
+$def-color-white: $white;
+$def-color-black: $black;
+
+$positive-text: $primary-green;
+$negative-text: $primary-red;
+
+$social-icon-color: $white;

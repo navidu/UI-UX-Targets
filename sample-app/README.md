@@ -199,12 +199,49 @@ gulp.task('task-name', function () {
 - As you can see, a real task takes in two additional gulp methods — `gulp.src` and `gulp.dest`.
 - `gulp.src` tells the Gulp task what files to use for the task, while `gulp.dest` tells Gulp where to output the files once the task is completed.
 
-## Step - 4 write a task for css
+## Step - 4 write a task for SCSS
+
+- Install sass:
+```shell
+npm install gulp-sass --save-dev
+```
 
 ```JavaScript
+var sass = require('gulp-sass'); //requires the gulp-sass plugin
+
 gulp.task('scss', function(){
-    return gulp.src('src/scss/**/*.scss')
+    return gulp.src('src/scss/**/*.scss') // refer "Globbing in Node" title
         .pipe(sass())
         .pipe(gulp.dest('dist/css'))
 });
 ```
+- Run scss task using `gulp scss`
+
+- Now you have new folder call dist and your file order will be like this
+
+```puml
+    |-sample-app
+      |- dist/
+          |- css/
+            |-style.css
+      |- src/
+          |- scss/
+            |-partials
+            |-style.scss
+          |- fonts/
+          |- img/
+          |- html/
+            |-partials
+            |-index.html
+          |- js/
+      |- gulpfile.js
+      |- node_modules/
+      |- package.json
+```
+
+## Globbing in Node
+- `*.scss` : any file match ending with `.scss`
+-  `**/*.scss` : any file match ending with `.scss` in the root folder
+- `!not-me.scss` : not execute
+-  `*.+(scss|sass)` : multiple pattern from root folder (`.scss` files or `.sass` files)
+
