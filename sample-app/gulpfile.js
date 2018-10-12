@@ -113,7 +113,7 @@ gulp.task('clean:dist', function () {
 
 //gulp build
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html', 'js', 'images']
+    runSequence('clean:dist', ['scss', 'html', 'js', 'images', 'fonts']
     );
 });
 

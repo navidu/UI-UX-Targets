@@ -523,3 +523,10 @@ gulp.task('fonts', function(){
         .pipe(gulp.dest('dist/fonts'));
 });
 ```
+- Add `fonts` task to your `build` function.
+```JavaScript
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html', 'js', 'images', 'fonts']
+    );
+});
+```
