@@ -423,3 +423,10 @@ gulp.task('scss', function(){
 ```shell
 npm install merge-stream --save-dev
 ```
+- Remove `getbootstrap` task from `build` function.
+```JavaScript
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html', 'getbootstrap']
+    );
+});
+```

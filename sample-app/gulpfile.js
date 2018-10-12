@@ -48,6 +48,29 @@ gulp.task('scss', function(){
     return merge(vendorStreamCss, appStreamCss);
 });
 
+//foe all js
+gulp.task('js', function(){
+    // Concatenate vendor scripts
+    var vendorStreamJs = gulp.src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/popper.js/dist/umd/popper.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js'
+    ])
+        .pipe(concat('vendors.js'))
+        .pipe(gulp.dest('dist/js'));
+
+    // Concatenate AND minify app sources
+    var appStreamJs = gulp.src(['src/js/*.js'])
+        .pipe(concat('index.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.reload({
+            stream:true
+        }));
+
+    return merge(vendorStreamJs, appStreamJs);
+});
+
 //for html
 gulp.task('html', function(){
     return gulp.src('src/html/*.html')
