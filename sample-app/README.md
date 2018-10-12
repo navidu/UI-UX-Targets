@@ -392,3 +392,4 @@ gulp.task('build', function(callback){
     );
 });
 ```
+- Now build the project using `gulp build` and run `gulp` task.
