@@ -9,6 +9,8 @@ var browserSync = require('browser-sync').create(); //for the browser sync
 var merge = require('merge-stream'); // merge two tasks and return
 var concat = require('gulp-concat');//for css and js
 var uglify = require('gulp-uglify');//for css and js
+var cache = require('gulp-cache');//clear the cache
+var imagemin = require('gulp-imagemin');//for images
 
 //sample task
 gulp.task('hello', function(){
@@ -80,6 +82,16 @@ gulp.task('html', function(){
         .pipe(browserSync.reload({
             stream: true
         }));
+});
+
+//images
+gulp.task('images', function () {
+    return gulp.src('src/img/**/*.+(png|jpg|gif|svg|ico|xml|webmanifest)')
+        .pipe(cache(imagemin({
+            // Setting interlaced to true
+            interlaced: true
+        })))
+        .pipe(gulp.dest('dist/img'));
 });
 
 //watch function for the changes

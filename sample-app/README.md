@@ -475,4 +475,35 @@ npm install jquery
 npm install popper.js
 ```
 - Source paths of the `.min` files of `jquery` and `popper.js` `js` are refer the `js` function under `vendorStreamJs` variable.
-- Add `js` task to you4 `default` function.
+- Add `js` task to your `build` function.
+```JavaScript
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html', 'js]
+    );
+});
+```
+
+## Step - 12 Write a task for images
+- Write this as a same task
+```JavaScript
+var cache = require('gulp-cache');//clear the cache
+var imagemin = require('gulp-imagemin');//for images
+
+gulp.task('images', function () {
+    return gulp.src('src/img/**/*.+(png|jpg|gif|svg|ico|xml|webmanifest)')
+        .pipe(cache(imagemin({
+            // Setting interlaced to true
+            interlaced: true
+        })))
+        .pipe(gulp.dest('dist/img'));
+});
+```
+- There is two `gulp` plugins call `gulp-cache` and `gulp-imagemin`.
+- `gulp-cache` is for clear Cache. When we change image of same name, we have to clear that image as well. That is why we use this plugin. Install `gulp-cache` as a dev dependency:
+```shell
+npm install gulp-cache --save-dev
+```
+- `gulp-imagemin` is use for create new image/s to the `dist/img` folder. Install `gulp-imagemin` as a dev dependency:
+```shell
+npm install gulp-imagemin --save-dev
+```
