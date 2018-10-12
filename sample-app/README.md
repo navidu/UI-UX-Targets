@@ -643,7 +643,7 @@ gulp.task('html', function(){
         }));
 });
 
-//images
+//for images
 gulp.task('images', function () {
     return gulp.src('src/img/**/*.+(png|jpg|gif|svg|ico|xml|webmanifest)')
         .pipe(cache(imagemin({
@@ -691,4 +691,43 @@ gulp.task('default', function (callback) {
         callback
     );
 });
+```
+- This is the `package.json`.
+```json
+{
+  "name": "sample-app",
+  "version": "1.0.0",
+  "description": "This is a sample project for create sample web app using npm and gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navidu/UI-UX-Targets.git"
+  },
+  "author": "Navidu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/navidu/UI-UX-Targets/issues"
+  },
+  "homepage": "https://github.com/navidu/UI-UX-Targets#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1",
+    "merge-stream": "^1.0.1",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4"
+  }
+}
 ```

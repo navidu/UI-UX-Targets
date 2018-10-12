@@ -84,7 +84,7 @@ gulp.task('html', function(){
         }));
 });
 
-//images
+//for images
 gulp.task('images', function () {
     return gulp.src('src/img/**/*.+(png|jpg|gif|svg|ico|xml|webmanifest)')
         .pipe(cache(imagemin({
