@@ -417,9 +417,9 @@ gulp.task('scss', function(){
     return merge(vendorStreamCss, appStreamCss);
 });
 ```
-- Create two variables for `vendorStreamCss` and `appStreamCss` (custom css). Pass the `src` values to that wo variables and `return` it.
+- Create two variables for `vendorStreamCss` and `appStreamCss` (`custom css`). Pass the `src` values to that two variables and `return` it.
 - On this return time, we have to merge it. But out puts are two different files.
-- So we have to install `merge-stream` plugin for that.
+- So we have to install `merge-stream` plugin for that as a dev dependency.
 ```shell
 npm install merge-stream --save-dev
 ```
