@@ -507,3 +507,10 @@ npm install gulp-cache --save-dev
 ```shell
 npm install gulp-imagemin --save-dev
 ```
+- Add `images` task to your `build` function.
+```JavaScript
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html', 'js', 'images']
+    );
+});
+```
