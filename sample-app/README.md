@@ -358,13 +358,37 @@ gulp.task('html', function(){
 - Because of when some changes on the files, the browser will refresh automatically.
 - But please remember, when you do some changes on yor files, this browser never automatically refresh for the changes. For the new changes, you have to run `watch` task.
 
-## Step - 9 Create th default task
+## Step - 9 Create the default task
 - Now we can identify our default task must be `watch` and `browserSync` tasks.
 - So or default task is like this:
 ```JavaScript
 gulp.task('default', function (callback) {
     runSequence(['watch', 'browserSync'],
         callback
+    );
+});
+```
+
+## Step - 10 Write a task for Bootstrap
+- Write a task call `getbootstrap`.
+- Install `bootstrap` not as  a dev dependency. Because of its need to view the project correctly.
+```shell
+npm install bootstrap
+```
+- Its install the latest version of the `bootstrap`
+- After that the task go and check is that `bootstrap.scss` on the `node_module` `scss` folder.
+- If yes, put that to `sass` plugin and generate the `css` and send the compiled version to the `dist/css` folder.
+```JavaScript
+gulp.task('getbootstrap', function(){
+    return gulp.src('node_modules/bootstrap/scss/bootstrap.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'));
+});
+```
+- Add your `getbootstrap` task into the `build` function.
+```JavaScript
+gulp.task('build', function(callback){
+    runSequence('clean:dist', ['scss', 'html', 'getbootstrap']
     );
 });
 ```

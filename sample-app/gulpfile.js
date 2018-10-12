@@ -22,6 +22,13 @@ gulp.task('scss', function(){
         }))
 });
 
+//for bootstrap
+gulp.task('getbootstrap', function(){
+    return gulp.src('node_modules/bootstrap/scss/bootstrap.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'));
+});
+
 //for html
 gulp.task('html', function(){
     return gulp.src('src/html/*.html')
@@ -44,7 +51,7 @@ gulp.task('clean:dist', function () {
 
 //gulp build
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html']
+    runSequence('clean:dist', ['scss', 'html', 'getbootstrap']
     );
 });
 

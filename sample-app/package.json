@@ -23,5 +23,7 @@
     "gulp-sass": "^4.0.1",
     "run-sequence": "^2.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.1.3"
+  }
 }
