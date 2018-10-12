@@ -417,7 +417,7 @@ gulp.task('scss', function(){
     return merge(vendorStreamCss, appStreamCss);
 });
 ```
-- Create two variables for `vendorStreamCss` and `appStreamCss` (`custom css`). Pass the `src` values to that two variables and `return` it.
+- Create two variables for `vendorStreamCss` and `appStreamCss` (`custom css`). Pass the `src` array values to that two variables and `return` it.
 - On this return time, we have to merge it. But out puts are two different files.
 - So we have to install `merge-stream` plugin for that as a dev dependency.
 ```shell
@@ -426,7 +426,53 @@ npm install merge-stream --save-dev
 - Remove `getbootstrap` task from `build` function.
 ```JavaScript
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html', 'getbootstrap']
+    runSequence('clean:dist', ['scss', 'html']
     );
 });
 ```
+## Step - 12 Write a task for Js
+- This is same as Step 11.
+- `vendorStreamJs` have all vendor`js` files in `node_modules` folder have as an an array.
+```JavaScript
+var concat = require('gulp-concat');//for css and js
+var uglify = require('gulp-uglify');//for css and js
+
+gulp.task('js', function(){
+    // Concatenate vendor scripts
+    var vendorStreamJs = gulp.src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/popper.js/dist/umd/popper.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js'
+    ])
+        .pipe(concat('vendors.js'))
+        .pipe(gulp.dest('dist/js'));
+
+    // Concatenate AND minify app sources
+    var appStreamJs = gulp.src(['src/js/*.js'])
+        .pipe(concat('index.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.reload({
+            stream:true
+        }));
+
+    return merge(vendorStreamJs, appStreamJs);
+});
+```
+- There is a `gulp` plugin call `gulp-concat`. That means all vendors' `js` files include to one `JavaScript` file. Install `gulp-concat`as a dev dependency:
+```shell
+npm install gulp-concat --save-dev
+```
+- As well as there is another `gulp` plugin call `uglify` for create the mini version of `JavaScript` file. Install `gulp-uglify`as a dev dependency
+```shell
+npm install gulp-uglify --save-dev
+```
+- If you need`jQuery` and `popper.js` `js` files install both NOT as a dev dependency.
+```shell
+npm install jquery
+```
+```shell
+npm install popper.js
+```
+- Source paths of the `.min` files of `jquery` and `popper.js` `js` are refer the `js` function under `vendorStreamJs` variable.
+- Add `js` task to you4 `default` function.

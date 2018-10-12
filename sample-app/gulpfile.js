@@ -7,6 +7,8 @@ var runSequence = require('run-sequence'); // need to run all sequence
 var del = require('del');//delete dist folder
 var browserSync = require('browser-sync').create(); //for the browser sync
 var merge = require('merge-stream'); // merge two tasks and return
+var concat = require('gulp-concat');//for css and js
+var uglify = require('gulp-uglify');//for css and js
 
 //sample task
 gulp.task('hello', function(){
@@ -93,7 +95,7 @@ gulp.task('clean:dist', function () {
 
 //gulp build
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html']
+    runSequence('clean:dist', ['scss', 'html', 'js']
     );
 });
 
