@@ -6,27 +6,46 @@ var sass = require('gulp-sass'); //requires the gulp-sass plugin
 var runSequence = require('run-sequence'); // need to run all sequence
 var del = require('del');//delete dist folder
 var browserSync = require('browser-sync').create(); //for the browser sync
+var merge = require('merge-stream'); // merge two tasks and return
 
 //sample task
 gulp.task('hello', function(){
     console.log('Hello Navidu');
 });
 
-//for css
+////for css
+//gulp.task('scss', function(){
+//    return gulp.src('src/scss/**/*.scss')
+//        .pipe(sass())
+//        .pipe(gulp.dest('dist/css'))
+//        .pipe(browserSync.reload({
+//            stream:true
+//        }))
+//});
+//
+////for bootstrap
+//gulp.task('getbootstrap', function(){
+//    return gulp.src('node_modules/bootstrap/scss/bootstrap.scss')
+//        .pipe(sass())
+//        .pipe(gulp.dest('dist/css'));
+//});
+
+//foe all css
 gulp.task('scss', function(){
-    return gulp.src('src/scss/**/*.scss')
+    //take vendor css
+    var vendorStreamCss = gulp.src(['node_modules/bootstrap/scss/bootstrap.scss'])
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'));
+
+    //take app css
+    var appStreamCss =  gulp.src('src/scss/**/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('dist/css'))
         .pipe(browserSync.reload({
             stream:true
-        }))
-});
+        }));
 
-//for bootstrap
-gulp.task('getbootstrap', function(){
-    return gulp.src('node_modules/bootstrap/scss/bootstrap.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('dist/css'));
+    return merge(vendorStreamCss, appStreamCss);
 });
 
 //for html
@@ -51,7 +70,7 @@ gulp.task('clean:dist', function () {
 
 //gulp build
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html', 'getbootstrap']
+    runSequence('clean:dist', ['scss', 'html']
     );
 });
 

@@ -393,3 +393,33 @@ gulp.task('build', function(callback){
 });
 ```
 - Now build the project using `gulp build` and run `gulp` task.
+
+## Step - 11 Write same tasks in one function
+- `scss` and `getbootstrap` are same tasks for build customs `style.css` and `bootstrap.css`.
+- We can create all two functions as one function like this:
+```JavaScript
+var merge = require('merge-stream'); // merge two tasks and return
+
+gulp.task('scss', function(){
+    //take vendor css
+    var vendorStreamCss = gulp.src(['node_modules/bootstrap/scss/bootstrap.scss'])
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'));
+
+    //take app css
+    var appStreamCss =  gulp.src('src/scss/**/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('dist/css'))
+        .pipe(browserSync.reload({
+            stream:true
+        }));
+
+    return merge(vendorStreamCss, appStreamCss);
+});
+```
+- Create two variables for `vendorStreamCss` and `appStreamCss` (custom css). Pass the `src` values to that wo variables and `return` it.
+- On this return time, we have to merge it. But out puts are two different files.
+- So we have to install `merge-stream` plugin for that.
+```shell
+npm install merge-stream --save-dev
+```
