@@ -514,3 +514,4 @@ gulp.task('build', function(callback){
     );
 });
 ```
+## Step - 13 Write a task for fonts
