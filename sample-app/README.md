@@ -731,3 +731,25 @@ gulp.task('default', function (callback) {
   }
 }
 ```
+## How to build and run this project
+### Step - 1
+- Create a folder call `src` with its' structure.
+- Create this `package.json` with final code.
+- Create this `gulpfile.js` with final code.
+
+### Step - 2
+- Create `node_modules` folder:
+```shell
+npm install
+```
+### Step - 3
+- Build the `gulp` project (run the `build` task)
+```shell
+gulp build
+```
+### Step - 4
+- Run the `gulp` project (run the `default` task)
+```shell
+gulp
+```
+## Enjoy your self! Thank you!
