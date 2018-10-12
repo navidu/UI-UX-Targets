@@ -94,6 +94,12 @@ gulp.task('images', function () {
         .pipe(gulp.dest('dist/img'));
 });
 
+//for fonts
+gulp.task('fonts', function(){
+    return gulp.src('src/fonts/*.{ttf,otf}')
+        .pipe(gulp.dest('dist/fonts'));
+});
+
 //watch function for the changes
 gulp.task('watch', function(){
     gulp.watch('src/scss/**/*.scss', ['scss']);
@@ -107,7 +113,7 @@ gulp.task('clean:dist', function () {
 
 //gulp build
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html', 'js']
+    runSequence('clean:dist', ['scss', 'html', 'js', 'images']
     );
 });
 

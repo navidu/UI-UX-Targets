@@ -514,4 +514,12 @@ gulp.task('build', function(callback){
     );
 });
 ```
+- Also, this `*.+(png|jpg|gif|svg|ico|xml|webmanifest)` refer all the formats of the images.
 ## Step - 13 Write a task for fonts
+- Write this as a same task
+```JavaScript
+gulp.task('fonts', function(){
+    return gulp.src('src/fonts/*.{ttf,otf}')
+        .pipe(gulp.dest('dist/fonts'));
+});
+```
