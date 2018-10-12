@@ -478,7 +478,7 @@ npm install popper.js
 - Add `js` task to your `build` function.
 ```JavaScript
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['scss', 'html', 'js]
+    runSequence('clean:dist', ['scss', 'html', 'js']
     );
 });
 ```
