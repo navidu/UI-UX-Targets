@@ -3,7 +3,7 @@
 - Fallow this steps to build your web application.
 - In here, some of task describe with points
 
-## Step -1 Create a project
+## Step - 1 Create a project
 - First create a project using npm
 ```shell
 npm init
@@ -258,7 +258,7 @@ gulp.task('watch', function(){
 - If there is an update on your files it will update the files in dist folder. (Did a changes of scss file)
 ![project-build](doc/img/watch-compiled.png)
 
-## Step - 5 Write a task for HTML
+## Step - 6 Write a task for HTML
 - Create an `index.html` file in html folder under `src` folder.
 - Haven't any gulp plugins for generate HTML. So directly put the `.html` files to `dist` folder.
 - Default `.html` file is `index.html`.
@@ -272,7 +272,7 @@ gulp.task('html', function(){
 - So this file also a more changeable file and have to add it to the `watch` task.
 - So first build `html` task and then build `watch` task.
 
-## Step - 6 Create the tasks build function
+## Step - 7 Create the tasks build function
 - Now, we have three `gulp` tasks.
 - We have to build task by task, First `scss` task, `html` task and last `watch` task.
 - If we have more tasks, it is hard to run. So create a `build` task to build all tasks in the project.
@@ -293,7 +293,7 @@ npm install run-sequence  --save-dev
 - All the building task are in an array.
 - `watch` task is not build any thing. So now, first run `build` task and the run `watch` task.
 
-## Step - 7 Create a new `dist` folder when project `build`
+## Step - 8 Create a new `dist` folder when project `build`
 - When the `watch` task running, code will override on the old code. Some time it will occurred the errors.
 - So we have to create a task for clear the `dist` folder when project build
 ```JavaScript
@@ -316,7 +316,7 @@ gulp.task('build', function(callback){
 ```
 - When you run `build` function run the `clean:dist` function as well as other tasks in the array.
 
-## Step - 8 Create a task for auto browser refreshing
+## Step - 9 Create a task for auto browser refreshing
 - This is an additional one for the browser refreshing after each and every changes.
 ```JavaScript
 var browserSync = require('browser-sync').create(); //for the browser sync
@@ -359,7 +359,7 @@ gulp.task('html', function(){
 - Because of when some changes on the files, the browser will refresh automatically.
 - But please remember, when you do some changes on yor files, this browser never automatically refresh for the changes. For the new changes, you have to run `watch` task.
 
-## Step - 9 Create the default task
+## Step - 10 Create the default task
 - Now we can identify our default task must be `watch` and `browserSync` tasks.
 - So or default task is like this:
 ```JavaScript
@@ -370,7 +370,7 @@ gulp.task('default', function (callback) {
 });
 ```
 
-## Step - 10 Write a task for Bootstrap
+## Step - 11 Write a task for Bootstrap
 - Write a task call `getbootstrap`.
 - Install `bootstrap` not as  a dev dependency. Because of its need to view the project correctly.
 ```shell
@@ -395,7 +395,7 @@ gulp.task('build', function(callback){
 ```
 - Now build the project using `gulp build` and run `gulp` task.
 
-## Step - 11 Write same tasks in one function
+## Step - 12 Write same tasks in one function
 - `scss` and `getbootstrap` are same tasks for build customs `style.css` and `bootstrap.css`.
 - We can create all two functions as one function like this:
 ```JavaScript
@@ -431,7 +431,7 @@ gulp.task('build', function(callback){
     );
 });
 ```
-## Step - 12 Write a task for Js
+## Step - 13 Write a task for Js
 - This is same as Step 11.
 - `vendorStreamJs` have all vendor`js` files in `node_modules` folder have as an an array.
 ```JavaScript
@@ -484,7 +484,7 @@ gulp.task('build', function(callback){
 });
 ```
 
-## Step - 12 Write a task for images
+## Step - 14 Write a task for images
 - Write this as a same task
 ```JavaScript
 var cache = require('gulp-cache');//clear the cache
@@ -516,7 +516,7 @@ gulp.task('build', function(callback){
 });
 ```
 - Also, this `*.+(png|jpg|gif|svg|ico|xml|webmanifest)` refer all the formats of the images.
-## Step - 13 Write a task for fonts
+## Step - 15 Write a task for fonts
 - Write this as a same task
 ```JavaScript
 gulp.task('fonts', function(){
