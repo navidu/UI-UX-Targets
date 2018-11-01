@@ -23,7 +23,7 @@ var client = (function($){
                         if(currentTab === 0) {
                             html +=
                                 '<div class="code-block" rel="field" data-value="' + fileName + '">' +
-                                '<label>$' + fileName + ' :</label>' +
+                                '<label>$' + fileName + ': </label>' +
                                 '<select rel="field-value">' +
                                 '<option value="1">Hex</option>' +
                                 '<option value="2">RGB</option>' +
@@ -34,7 +34,7 @@ var client = (function($){
                                 '<input rel="2" type="text" style="display: none" class="form-control demo">' +
                                 '<input rel="3" type="text" style="display: none"/>' +
                                 '<input rel="4" type="text" style="display: none"/>' +
-                                '</div>';
+                                ';</div>';
                         }else{
                             html += '<div class="code-block" rel="field" data-value="' + fileName + '">' +
                                 '<label>$' + fileName + ' :</label>' +
@@ -44,7 +44,7 @@ var client = (function($){
                                     html += '<option value="' + scssVar + '">' + scssVar + '</option>';
                                 }
                             }
-                            html += '</select></div>';
+                            html += '</select>;</div>';
                         }
                     });
 
@@ -111,7 +111,7 @@ var client = (function($){
                     for(var scssVar in map[level]){
                         if(map[level].hasOwnProperty(scssVar)){
                             html += '<div class="code-block">' +
-                                '<span>$' + scssVar + ' : </span>' +
+                                '<span>$' + scssVar + ': </span>' +
                                 '<span>' + (l !== 0 ? '$' : '') +  map[level][scssVar] + '; </span>' +
                                 '</div>';
                         }
