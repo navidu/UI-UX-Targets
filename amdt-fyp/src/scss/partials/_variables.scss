@@ -1,0 +1,39 @@
+//color
+$black: #000000;
+$white: #ffffff;
+$primary-gray: #dddddd;
+$primary-red: #f35b3f;
+$primary-dark-blue: #001d26;
+$primary-light-blue: #00c8ff;
+$primary-dark-orange: #261300;
+$primary-light-orange: #ff7c00;
+
+//not change
+$facebook:#3b579d;
+$twitter:#1da1f3;
+$telegram:#20a0e1;
+$video:#ff0000;
+
+//fonts
+$primary-font: Lato-Regular, sans-serif;
+$primary-font-url: url('../fonts/Lato-Regular.ttf') format("truetype");
+$secondary-font: Monaco, sans-serif;
+$secondary-font-url: url('../fonts/Monaco.ttf') format("truetype");
+
+//for media screens break points
+$break-xs: 320px;
+$break-sm: 480px;
+$break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+
+//second level
+$body-bg-color: $white;
+
+$tab-color: $primary-gray;
+$tab-act-color: $primary-red;
+
+$photoshop-bg: $primary-dark-blue;
+$photoshop-color: $primary-light-blue;
+$illustrator-bg: $primary-dark-orange;
+$illustrator-color: $primary-light-orange;

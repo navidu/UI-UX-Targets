@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theme Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .grad_ex {
+            width: 200px;
+            height: 20px;
+            margin-bottom: 32px;
+        }
+
+        .details{
+            position: absolute;
+            width: 30px;
+            right: 0;
+            margin-right: -40px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="variableForm">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 step">
+                <div class="icon">
+                    <i class="fa fa-dice-one"></i>
+                </div>
+                <div class="details-area">
+                    Create level 1 variables
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 step">
+                <div class="icon">
+                    <i class="fa fa-dice-two"></i>
+                </div>
+                <div class="details-area">
+                    Create level 2 variables
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 step">
+                <div class="icon">
+                    <i class="fab fa-sass"></i>
+                </div>
+                <div class="details-area">
+                    Generate my SCSS
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                <form ref='uploadForm' id='uploadForm'>
+                    Choose your <span class="photoshop">Adobe Photoshop</span> or <span
+                        class="illustrator">Adobe Illustrator</span> files from level <strong>1</strong> folder.
+                    <input name="sampleFile" class="input-button multy-files" type="file" multiple webkitdirectory=""
+                           directory="">
+                    <button class="btn btn-info" id="upload" type="button">Upload Files</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="editor-area" rel="level0">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="editor-area" rel="level1" style="display: none">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="editor-area" rel="level2" style="display: none">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 pull-right">
+                        <button type="button" class="btn btn-default" rel="next">Next</button>
+                        <button type="button" class="btn btn-default" rel="prev" style="display: none">Previous</button>
+                        <button type="button" class="btn btn-default" rel="generate" style="display: none">Generate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--for gradient color picker-->
+    <div class="ra-btn"><input type="radio" checked="checked"> Linear <input type="radio"> Radial</div>
+    <div class="grad_ex" id="ex1"><input type="text" class="details" placeholder="0"></div>
+    <div class="grad_ex" id="ex2"></div>
+    <div class="ra-btn"><input type="radio"> Linear <input type="radio" checked="checked"> Radial</div>
+    <div class="grad_ex" id="ex3"></div>
+
+    <!--<div id="controlled">-->
+        <!--<div class="left ex1"></div>-->
+        <!--<div class="right ex2"></div>-->
+        <!--<div class="bottom ex3"></div>-->
+    <!--</div>-->
+</div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS-->
+<script src="js/vendors.js" crossorigin="anonymous"></script>
+<!-- Custom js calling index.js-->
+<script src="js/index.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+body, .body, BODY {
+  background: $body-bg-color;
+  font-family: $primary-font;
+}
+
+pre{
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal
+}
+
+nav {
+  display: flex;
+}
+
+.step {
+  @include center-all;
+  flex-direction: column;
+  padding: 30px 10px;
+  width: 100%;
+  .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    @include center-all;
+    border: 1px solid;
+    border-color: $tab-color;
+    color: $tab-color;
+    &:before{
+      content: '';
+      width: calc(50% - 25px);
+      height: 1px;
+      right: calc(50% + 25px);
+      border: 1px solid;
+      border-color: $tab-color;
+      position: absolute;
+    }
+    &:after{
+      content: '';
+      width: calc(50% - 25px);
+      height: 1px;
+      left: calc(50% + 25px);
+      border: 1px solid;
+      border-color: $tab-color;
+      position: absolute;
+    }
+  }
+  .details-area {
+    text-align: center;
+    line-height: 15px;
+    @include center-all;
+    color: $tab-color;
+    margin-top: 10px;
+  }
+  &.active{
+    .icon, .details-area{
+      border-color: $tab-act-color;
+      color: $tab-act-color;
+      &:before, &:after{
+        border-color: $tab-act-color;
+      }
+    }
+  }
+  &:first-child{
+    .icon{
+      &:before{
+        display: none;
+      }
+    }
+  }
+  &:last-child{
+    .icon{
+      &:after{
+        display: none;
+      }
+    }
+  }
+}
+
+.editor-area{
+  padding: 15px;
+  border: 1px solid;
+  border-color: $tab-color;
+  border-radius: 10px;
+  background: lighten($tab-color, 10);
+  height: 70vh;
+}
+
+.photoshop{
+  background: $photoshop-bg;
+  color: $photoshop-color;
+  border-color: $photoshop-color;
+}
+.illustrator{
+  background: $illustrator-bg;
+  color: $illustrator-color;
+  border-color: $illustrator-bg;
+}
+
+.photoshop, .illustrator{
+  padding: 5px 9px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.multy-files{
+  width: 210px;
+  line-height: 30px;
+}
+.tab{
+  display: none;
+}
+.code-block{
+  font-family: $secondary-font;
+  .dropdown-toggle{
+    background: none;
+    border: none;
+    &:focus{
+      outline: none;
+    }
+  }
+  .dropdown-menu{
+    border: none;
+  }
+  input{
+    border: none;
+  }
+}
