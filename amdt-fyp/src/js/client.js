@@ -51,7 +51,7 @@ var client = (function($){
                     element.html(html);
 
                     if(currentTab === 0) {
-
+                        
                         element.find('input[rel="1"]').minicolors({
                             control: 'hue',
                             defaultValue: '#ff6161',
@@ -90,6 +90,7 @@ var client = (function($){
                             }
                         });
 
+                        _showHideButtons(true);
                         element.find('select[rel="field-value"]').trigger('change');
                     }
                 }
@@ -123,6 +124,7 @@ var client = (function($){
         });
 
         _fixStepIndicator(0);
+        _showHideButtons(false);
 
         function _onNext(){
             var element = $('div[rel="level' + currentTab + '"]');
@@ -131,11 +133,30 @@ var client = (function($){
             currentTab++;
             _fixStepIndicator(currentTab);
             $('div[rel="level' + currentTab + '"]').show();
-            if(currentTab === 1){
-                $('button[rel="next"]').hide();
-                $('button[rel="prev"]').show();
-                $('button[rel="generate"]').show();
-            }
+            _showHideButtons(false);
+        }
+        
+        function _showHideButtons(isUploaded){
+            switch(currentTab){
+                case 0:
+                    if(isUploaded){
+                        $('button[rel="next"]').show();
+                    }else{
+                        $('button[rel="next"]').hide();
+                    }
+                    $('button[rel="prev"]').hide();
+                    $('button[rel="generate"]').hide();
+                    break;
+                case 1:
+                    $('button[rel="prev"]').show();
+                    $('button[rel="generate"]').show();
+                    $('button[rel="next"]').hide();
+                    break;
+                case 2:
+                    $('button[rel="prev"]').show();
+                    $('button[rel="next"]').hide();
+                    $('button[rel="generate"]').hide();
+                    break;
         }
 
         function _saveScssVariables(element){
