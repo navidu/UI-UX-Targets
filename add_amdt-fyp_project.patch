@@ -1,0 +1,65 @@
+Index: amdt-fyp/src/html/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- amdt-fyp/src/html/index.html	(revision 351548fd745eab83f1a06a85e7f64fb25d985eda)
++++ amdt-fyp/src/html/index.html	(revision )
+@@ -84,9 +84,9 @@
+                 </div>
+                 <div class="row">
+                     <div class="col-sm-12 pull-right">
+-                        <button type="button" class="btn btn-default" rel="next">Next</button>
+-                        <button type="button" class="btn btn-default" rel="prev" style="display: none">Previous</button>
+-                        <button type="button" class="btn btn-default" rel="generate" style="display: none">Generate
++                        <button type="button" class="btn btn-success" rel="next">Next</button>
++                        <button type="button" class="btn btn-light" rel="prev" style="display: none">Previous</button>
++                        <button type="button" class="btn btn-primary" rel="generate" style="display: none">Generate
+                         </button>
+                     </div>
+                 </div>
+\ No newline at end of file
+Index: amdt-fyp/src/js/client.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- amdt-fyp/src/js/client.js	(revision 351548fd745eab83f1a06a85e7f64fb25d985eda)
++++ amdt-fyp/src/js/client.js	(revision )
+@@ -23,7 +23,7 @@
+                         if(currentTab === 0) {
+                             html +=
+                                 '<div class="code-block" rel="field" data-value="' + fileName + '">' +
+-                                '<label>$' + fileName + ' :</label>' +
++                                '<label>$' + fileName + ': </label>' +
+                                 '<select rel="field-value">' +
+                                 '<option value="1">Hex</option>' +
+                                 '<option value="2">RGB</option>' +
+@@ -34,7 +34,7 @@
+                                 '<input rel="2" type="text" style="display: none" class="form-control demo">' +
+                                 '<input rel="3" type="text" style="display: none"/>' +
+                                 '<input rel="4" type="text" style="display: none"/>' +
+-                                '</div>';
++                                ';</div>';
+                         }else{
+                             html += '<div class="code-block" rel="field" data-value="' + fileName + '">' +
+                                 '<label>$' + fileName + ' :</label>' +
+@@ -44,7 +44,7 @@
+                                     html += '<option value="' + scssVar + '">' + scssVar + '</option>';
+                                 }
+                             }
+-                            html += '</select></div>';
++                            html += '</select>;</div>';
+                         }
+                     });
+ 
+@@ -111,7 +111,7 @@
+                     for(var scssVar in map[level]){
+                         if(map[level].hasOwnProperty(scssVar)){
+                             html += '<div class="code-block">' +
+-                                '<span>$' + scssVar + ' : </span>' +
++                                '<span>$' + scssVar + ': </span>' +
+                                 '<span>' + (l !== 0 ? '$' : '') +  map[level][scssVar] + '; </span>' +
+                                 '</div>';
+                         }
+\ No newline at end of file

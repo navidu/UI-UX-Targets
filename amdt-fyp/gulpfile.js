@@ -46,8 +46,9 @@ gulp.task('scss', function(){
         'node_modules/@fortawesome/fontawesome-free/scss/solid.scss',
         'node_modules/@fortawesome/fontawesome-free/scss/v4-shims.scss',
         'node_modules/bootstrap/scss/bootstrap.scss',
-        'node_modules/@claviska/jquery-minicolors/jquery.minicolors.css'])
-        .pipe(sass())
+        'node_modules/@claviska/jquery-minicolors/jquery.minicolors.css',
+        'node_modules/grapick/dist/grapick.min.css'
+    ]).pipe(sass())
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest('dist/css'));
         console.log('src/scss/lib/lib-override.scss');
@@ -73,7 +74,8 @@ gulp.task('js', function(){
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/@claviska/jquery-minicolors/jquery.minicolors.js',
-        'src/js/lib/**/*.js'
+        'node_modules/grapick/dist/grapick.min.js'
+        //'src/js/lib/**/*.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest('dist/js'));
