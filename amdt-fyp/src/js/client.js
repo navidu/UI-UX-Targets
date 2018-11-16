@@ -6,10 +6,18 @@ var client = (function($){
             nextBtn = $('button[rel="next"]'),
             prevBtn = $('button[rel="prev"]'),
             copyBtn = $('button[rel="copy"]'),
-            generateBtn = $('button[rel="generate"]');
+            generateBtn = $('button[rel="generate"]'),
+            form = $('form[rel="uploadForm"]');
+
+        $('input[name="sampleFile"]').on('change', function(){
+            if($(this).val()) {
+                uploadBtn.show();
+            }else{
+                uploadBtn.hide();
+            }
+        });
 
         uploadBtn.on('click', function () {
-            var form = $(this).parent('form');
             var formdata = false;
             if (window.FormData) {
                 formdata = new FormData(form[0]);
@@ -23,6 +31,9 @@ var client = (function($){
                 processData: false,
                 type: 'POST',
                 success: function (data) {
+                    $('input[name="sampleFile"]').val('');
+                    uploadBtn.hide();
+
                     var html = '', element = $('div[rel="level' + currentTab + '"]');
 
                     data.forEach(function(fileName){
@@ -101,11 +112,15 @@ var client = (function($){
                                 $(v).find('input[rel="gradientValue"]').val(lgp.getValue());
                             });
 
+                            $(v).find('input[rel="gradientValue"]').val(lgp.getValue());
+
                             var rgp = new Grapick({el: $(v).find('div[rel="' + val + '-radial-gradient"]')[0], type: 'radial'});
 
                             // Handlers are color stops
                             rgp.addHandler(0, 'red');
                             rgp.addHandler(100, 'blue');
+
+                            $(v).find('input[rel="gradientValue"]').val(rgp.getValue());
 
                             // Do stuff on change of the gradient
                             rgp.on('change', function () {
@@ -222,10 +237,11 @@ var client = (function($){
             element.hide();
             currentTab++;
             _fixStepIndicator(currentTab);
-            var newElement = _getCurrentTab();;
+            var newElement = _getCurrentTab();
             _showScssVariables(newElement);
             newElement.show();
             _showHideButtons(false);
+            $('strong[rel="tab"]').html(currentTab + 1);
         }
 
         function _onPrev(){
@@ -236,6 +252,7 @@ var client = (function($){
             var newElement = _getCurrentTab();
             _showScssVariables(newElement);
             newElement.show();
+            $('strong[rel="tab"]').html(currentTab + 1);
         }
 
         function _getCurrentTab(){
@@ -245,6 +262,7 @@ var client = (function($){
         function _showHideButtons(isUploaded){
             switch(currentTab) {
                 case 0:
+                    form.show();
                     if (isUploaded) {
                         nextBtn.show();
                     } else {
@@ -255,12 +273,14 @@ var client = (function($){
                     copyBtn.hide();
                     break;
                 case 1:
+                    form.show();
                     prevBtn.show();
                     generateBtn.show();
                     nextBtn.hide();
                     copyBtn.hide();
                     break;
                 case 2:
+                    form.hide();
                     prevBtn.show();
                     nextBtn.hide();
                     generateBtn.hide();
