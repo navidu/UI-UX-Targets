@@ -1,6 +1,7 @@
 //color
 $black: #000000;
 $white: #ffffff;
+$primary-black: #333;
 $primary-gray: #dddddd;
 $secondary-gray: #666d89;
 $primary-red: #f35b3f;
@@ -9,6 +10,8 @@ $primary-light-blue: #00c8ff;
 $primary-dark-orange: #261300;
 $primary-light-orange: #ff7c00;
 $primary-yellow: #fff38f;
+$primary-green: #28a745;
+$secondary-green: #17a2b8;
 
 $main-light-blue: #3f81f3;
 $main-dark-blue: #001436;
@@ -55,3 +58,13 @@ $copy-scss-bg: $primary-red;
 $form-input-bg: transparentize($white, 0.9);
 $form-input-color: $primary-yellow;
 $form-select-color: $white;
+
+$up-files: $secondary-green;
+$next: $primary-green;
+$gen-sucess: $main-light-blue;
+
+$copied-bg: $primary-black;
+
+$loading-bg: $main-dark-blue;
+
+$loading-dots: $white;

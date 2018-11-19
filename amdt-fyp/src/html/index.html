@@ -19,8 +19,8 @@
     <!--styles-->
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"-->
+    <!--integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">-->
     <!--/.styles-->
 </head>
 <body>
@@ -71,61 +71,112 @@
                     <div class="col-lg-9">
                         <div class="editor-area mb-3" rel="level0">
                         </div>
+                        <div class="editor-area mb-3" rel="level1" style="display: none">
+                        </div>
+                        <div class="editor-area mb-3 last-panel" rel="level2" style="display: none">
+                        </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="steps-area">
-                        <div class="infor-content">
-                            <h3>Welcome to the Blue Shadow App!</h3>
-                            <h6>Fallow these steps to generate your SCSS color variable file!</h6>
-                            <ul>
-                                <li>Choose your .psd files or .ai files from the <strong>level 1</strong> folder.</li>
-                                <li>Click enabled <strong>"Upload Files"</strong> button on right top corner to upload
+                            <div class="infor-content" rel="info">
+                                <ul rel="step1">
+                                    <li rel="title1" style="display: flex;"><h3>Welcome to the Blue Shadow App!</h3>
+                                    </li>
+                                    <li rel="title2" style="display: flex;"><h6>Fallow these steps to generate your SCSS
+                                        color variable file!</h6></li>
+                                    <li rel="advice1" style="display: flex;">
+                                        <i class="fa fa-check"></i><span>Choose your <span class="photoshop mini">Ps</span> files or <span class="illustrator mini">Ai</span> files from the <strong>level
+                                        1</strong> folder.</span></li>
+                                    <li rel="advice2" style="display: none;"><i class="fa fa-check"></i><span>Click enabled <strong
+                                            class="cus-title-one">"Upload
+                                        Files"</strong> button on right top corner to upload
                                     your
-                                    files to the application.
-                                </li>
-                                <li>Click enabled <strong>"Next"</strong> button on left bottom corner go to the level
-                                    2.
-                                </li>
-                                <!--<br>-->
-                                <!--<li>Now you have your level 1 file names as the variables.</li>-->
-                                <!--<li>Assign the values of your .psd files or .ai files to this variables. You can assign-->
-                                    <!--HEX/RGBA/Linear Gradient/Radial Gradient/URL using the drop down of each-->
-                                    <!--variable.<br>-->
-                                    <!--<i>Please check the correct values which you set on your .psd or .ai files. Until-->
-                                        <!--your-->
-                                        <!--project look will crash. </i>-->
-                                <!--</li>-->
-                                <br>
-                                <!--<li>Choose your .psd files or .ai files from the <strong>level 2</strong> folder.</li>-->
-                                <!--<li>Click enabled "Upload Files" button on right top corner to upload your files to the-->
-                                <!--application.-->
-                                <!--</li>-->
-                                <!--<br>-->
-                                <!--<li>Now you have your level 2 file names as the variables.</li>-->
-                                <!--<li>Assign the values of level 1 files to this variables. You can assign the level 1 values using-->
-                                <!--the drop down of each variable.<br>-->
-                                <!--<i>Please check the correct variable which you set on level 1. Until your-->
-                                <!--project look will crash. </i>-->
-                                <!--</li>-->
-                                <!--<li>Click "Generate SCSS" button on left bottom corner go to the last level</li>-->
-                                <!--<br>-->
-                            </ul>
-                            <!--<h3>Your SCSS color variables file successfully generated!</h3>-->
-                            <!--<h6>Click <strong>"Copy SCSS"</strong> button on left bottom corner to copy this file.</h6>-->
-                            <!--<h1 style="text-align: center">Thank You!</h1>-->
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="editor-area mb-3" rel="level1" style="display: none">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="editor-area mb-3 last-panel" rel="level2" style="display: none">
+                                    files to the application.</span>
+                                    </li>
+                                    <!--<li rel="stilluploading" style="display: none; color: red;">Testing 1</li>-->
+                                    <li rel="stilluploading" style="display: none;">
+                                        <div class="loading" rel="stilluploading">
+                                            <div class="loadingare">
+                                                <div class="loading-icons">
+                                                    <span class="l-1 photoshop">Ps</span>
+                                                    <span class="l-2 illustrator">Ai</span>
+                                                    <span class="l-3 photoshop">Ps</span>
+                                                    <span class="l-4 illustrator">Ai</span>
+                                                    <span class="l-5 photoshop">Ps</span>
+                                                    <span class="l-6 photoshop">Ps</span>
+                                                    <span>Uploading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul rel="step2">
+                                    <li><i class="fa fa-check"></i><span>Now you have your level 1 file names as the variables.</span>
+                                    </li>
+                                    <li><i class="fa fa-check"></i><span>Assign the values of your .psd files or .ai files to this variables. You can assign
+                                    HEX/RGBA/Linear Gradient/Radial Gradient/URL using the drop down of each
+                                    variable.<br>
+                                    <q>Please check the correct values which you set on your .psd or .ai files. Until
+                                        your
+                                        project look will crash. </q></span>
+                                    </li>
+                                    <li><i class="fa fa-check"></i><span>Then click enabled <strong
+                                            class="cus-title-two">"Next"</strong> button on left bottom corner go to the level
+                                    2.</span>
+                                    </li>
+                                </ul>
+                                <ul rel="step3">
+                                    <li>
+                                        <i class="fa fa-check"></i><span>Choose your <span class="photoshop mini">Ps</span> files or <span class="illustrator mini">Ai</span> files from the <strong>level
+                                        2</strong> folder.</span></li>
+                                    <li><i class="fa fa-check"></i><span>Then Click enabled <strong
+                                            class="cus-title-one">"Upload
+                                        Files"</strong> button on right top corner to upload your files to the
+                                application.</span>
+                                    </li>
+                                    <!--<li rel="stilluploading2" style="display: none; color: red;">Testing 2</li>-->
+                                    <li rel="stilluploading2" style="display: none;">
+                                        <div class="loading" rel="stilluploading">
+                                            <div class="loadingare">
+                                                <div class="loading-icons">
+                                                    <span class="l-1 photoshop">Ps</span>
+                                                    <span class="l-2 illustrator">Ai</span>
+                                                    <span class="l-3 photoshop">Ps</span>
+                                                    <span class="l-4 illustrator">Ai</span>
+                                                    <span class="l-5 photoshop">Ps</span>
+                                                    <span class="l-6 photoshop">Ps</span>
+                                                    <span>Uploading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul rel="step4">
+                                    <li><i class="fa fa-check"></i><span>Now you have your level 2 file names as the variables.</span>
+                                    </li>
+                                    <li><i class="fa fa-check"></i><span>Assign the values of level 1 files to this variables. You can assign the level 1 values using
+                                the drop down of each variable.<br>
+                                <q>Please check the correct variable which you set on level 1. Until your
+                                    project look will crash. </q></span>
+                                    </li>
+                                    <li><i class="fa fa-check"></i><span>Click <strong class="cus-title-two">"Generate
+                                        SCSS"</strong> button on left bottom corner go to the last level</span>
+                                    </li>
+                                </ul>
+                                <ul rel="step5">
+                                    <li>
+                                        <h3 class="success-generated">Your SCSS color variables file successfully
+                                            generated!</h3>
+                                    </li>
+                                    <li>
+                                        <h6 class="success-generated">Click <strong class="cus-title-three">"Copy
+                                            SCSS"</strong> button on left
+                                            bottom
+                                            corner to copy this file.
+                                        </h6>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,7 +185,12 @@
                         <button class="btn btn-success" rel="next">Next</button>
                         <button class="btn btn-light mr-2" rel="prev" style="display: none">Previous</button>
                         <button class="btn btn-success" rel="generate" style="display: none">Generate SCSS</button>
-                        <button class="btn btn-light copy-scss" rel="copy">Copy SCSS</button>
+                        <div rel="copy" class="copy-scss-area">
+                            <button class="btn btn-light copy-scss" rel="copy">Copy SCSS</button>
+                            <div rel="copied" class="text-copied" style="display: none;">
+                                <div class="text-copied-content">Copied</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

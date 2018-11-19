@@ -4,23 +4,41 @@ var client = (function ($) {
     $(document).ready(function () {
         var uploadBtn = $('button[rel="upload"]'),
             nextBtn = $('button[rel="next"]'),
+            title1Text = $('li[rel="title1"]'),
+            title2Text = $('li[rel="title2"]'),
+            advice1Text = $('li[rel="advice1"]'),
+            advice2Text = $('li[rel="advice2"]'),
+            stillUploading = $('li[rel="stilluploading"]'),
+            stillUploading2 = $('li[rel="stilluploading2"]'),
+            selectLevel1 = $('li[rel="selectLevel1"]'),
             prevBtn = $('button[rel="prev"]'),
             copyBtn = $('button[rel="copy"]'),
+            copiedPopup = $('div[rel="copied"]'),
             generateBtn = $('button[rel="generate"]'),
             form = $('form[rel="uploadForm"]');
 
         $('input[name="sampleFile"]').on('change', function () {
             if ($(this).val()) {
                 uploadBtn.show();
+                advice1Text.hide();
+                advice2Text.show();
+                title1Text.hide();
+                title2Text.hide();
             } else {
                 uploadBtn.hide();
+                advice1Text.show();
+                advice2Text.hide();
+                title1Text.show();
+                title2Text.show();
             }
         });
 
         uploadBtn.on('click', function () {
+            stillUploading.show();
             var formdata = false;
             if (window.FormData) {
                 formdata = new FormData(form[0]);
+                stillUploading.show();
             }
 
             $.ajax({
@@ -31,6 +49,10 @@ var client = (function ($) {
                 processData: false,
                 type: 'POST',
                 success: function (data) {
+                    uploadBtn.on('click', function (){
+                        stillUploading2.show();
+                    });
+
                     $('input[name="sampleFile"]').val('');
                     uploadBtn.hide();
 
@@ -51,13 +73,14 @@ var client = (function ($) {
                                 '<input data-ctrl="color" rel="2" type="text" style="display: none" class="form-control demo">' +
                                 '<div data-ctrl="color" class="gradient-section" rel="3" data-value="' + fileName + '" style="display: none">' +
                                 '<div class="gradient-select">' +
-                                '<input data-ctrl="gradient" type="radio" checked="checked" rel="' + fileName + '-linear-gradient" name="' + fileName + 'gradient"> Linear' +
+                                    '<input data-ctrl="gradient" type="radio" checked="checked" rel="' + fileName + '-linear-gradient" name="' + fileName + 'gradient"> Linear' +
+                                    '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-linear-gradient"></div>' +
                                 '</div>' +
                                 '<div class="gradient-select">' +
-                                '<input data-ctrl="gradient" type="radio" rel="' + fileName + '-radial-gradient" name="' + fileName + 'gradient"> Radial ' +
+                                    '<input data-ctrl="gradient" type="radio" rel="' + fileName + '-radial-gradient" name="' + fileName + 'gradient"> Radial ' +
+                                    '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-radial-gradient" style="display: none;"></div>' +
                                 '</div>' +
-                                '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-linear-gradient" style="display: none;"></div>' +
-                                '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-radial-gradient" style="display: none;"></div>' +
+                                //'<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-radial-gradient" style="display: none;"></div>' +
                                 '<input rel="gradientValue" type="text">' +
                                     //'<div class="ra-btn">' +
                                     //    '<input data-ctrl="gradient" type="radio" checked="checked" rel="linear" name="gradient"> Linear ' +
@@ -136,8 +159,14 @@ var client = (function ($) {
                         });
 
                         element.find('input[data-ctrl="gradient"]').on('click', function () {
-                            $(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
-                            element.find('div[rel="' + $(this).attr('rel') + '"]').show();
+                            if($(this).is(':checked')) {
+                                $(this).parents('div[data-ctrl="color"]').find('div[data-ctrl="gradient-type"]').hide();
+                                //$(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
+                                element.find('div[rel="' + $(this).attr('rel') + '"]').show();
+                            //}else {
+                            //    $(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
+                                //element.find('div[rel="' + $(this).attr('rel') + '"]').hide();
+                            }
                         });
 
                         //element.find('div[rel="linear"]').gradientPicker({
@@ -173,17 +202,17 @@ var client = (function ($) {
                                     selected.parent('div.minicolors').show();
                                     break;
                                 case '3':
-                                    selected.find('input[data-ctrl="gradient"]').trigger('click');
+                                    //selected.find('input[data-ctrl="gradient"]').trigger('click');
                                     break;
                                 default:
                                     //e.parent('div').find('input[rel="' + val + '"').show();
                                     break;
                             }
                         });
-
-                        _showHideButtons(true);
-                        element.find('select[rel="field-value"]').trigger('change');
                     }
+
+                    _showHideButtons(true);
+                    element.find('select[rel="field-value"]').trigger('change');
                 }
             });
         });
@@ -203,6 +232,7 @@ var client = (function ($) {
             //document.execCommand("copy");
             //alert("Copied the text: " + copyText.value);
 
+
             var copySCSS = $("<textarea>");
             $("body").append(copySCSS);
             copySCSS.val($('div[rel="level2"]').text().replace(/;/g, ';\n').replace(/----------------------/g, '---------------------\n')).select();
@@ -210,6 +240,8 @@ var client = (function ($) {
             //var result = copySCSS.replace(/\;/g,';<br/>');
             document.execCommand("copy");
             copySCSS.remove();
+            copiedPopup.show();
+            copiedPopup.fadeOut(1000, 'easeInOutQuart');
             //alert("Copied the text: " + copySCSS.val);
         });
 
@@ -225,7 +257,7 @@ var client = (function ($) {
                         if (map[level].hasOwnProperty(scssVar)) {
                             html += '<div class="code-block">' +
                                 '<span>$' + scssVar + ': </span>' +
-                                '<span>' + (l !== 0 ? '$' : '') + map[level][scssVar].value + '; </span>' +
+                                '<span>' + (l !== 0 ? '$' : '') + map[level][scssVar].value + '</span>;' +
                                 '</div>';
                         }
                     }
@@ -268,13 +300,17 @@ var client = (function ($) {
         }
 
         function _showHideButtons(isUploaded) {
+            var infoContainer = $('div[rel="info"]');
+            infoContainer.find('> ul').hide();
             switch (currentTab) {
                 case 0:
                     form.show();
                     if (isUploaded) {
                         nextBtn.show();
+                        infoContainer.find('ul[rel="step2"]').show();
                     } else {
                         nextBtn.hide();
+                        infoContainer.find('ul[rel="step1"]').show();
                     }
                     prevBtn.hide();
                     generateBtn.hide();
@@ -283,7 +319,13 @@ var client = (function ($) {
                 case 1:
                     form.show();
                     prevBtn.show();
-                    generateBtn.show();
+                    if (isUploaded) {
+                        generateBtn.show();
+                        infoContainer.find('ul[rel="step4"]').show();
+                    } else {
+                        generateBtn.hide();
+                        infoContainer.find('ul[rel="step3"]').show();
+                    }
                     nextBtn.hide();
                     copyBtn.hide();
                     break;
@@ -293,6 +335,7 @@ var client = (function ($) {
                     nextBtn.hide();
                     generateBtn.hide();
                     copyBtn.show();
+                    infoContainer.find('ul[rel="step5"]').show();
                     break;
             }
         }

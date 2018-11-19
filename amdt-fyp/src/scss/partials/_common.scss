@@ -19,7 +19,7 @@ nav {
 
 select {
   background-color: $form-input-bg;
-  option{
+  option {
     background-color: $form-input-bg;
   }
   border: none;
@@ -110,7 +110,30 @@ select {
   color: $information-color;
   .infor-content {
     ul {
-      padding-left: 20px;
+      padding-left: 0;
+      li {
+        list-style: none;
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 10px;
+        i, q {
+          margin-right: 15px;
+          color: lighten($information-color, 15);
+          font-style: italic;
+        }
+        strong {
+          color: lighten($information-color, 15);
+          &.cus-title-one {
+            color: $up-files;
+          }
+          &.cus-title-two {
+            color: $next;
+          }
+          &.cus-title-three {
+            color: $copy-scss-bg;
+          }
+        }
+      }
     }
   }
 }
@@ -131,11 +154,15 @@ select {
   padding: 5px 9px 8px;
   border-radius: 4px;
   border: 1px solid;
+  &.mini{
+    padding: 4px 6px 4px;
+    font-size: 12px;
+  }
 }
 
 .multy-files {
   width: 210px;
-  line-height: 30px;
+  line-height: 33px;
 }
 
 .tab {
@@ -170,6 +197,11 @@ select {
     padding: 0 5px 0 5px;
     color: $form-input-color;
   }
+  span {
+    &:nth-child(2) {
+      color: $form-input-color;
+    }
+  }
 }
 
 .copy-scss {
@@ -183,20 +215,123 @@ select {
   }
 }
 
+.success-generated {
+  color: $gen-sucess;
+
+}
+
 .gradient-section {
   display: inline-flex;
-  .gradient-select{
+  .gradient-select {
     display: flex;
     height: 30px;
     align-items: center;
     margin-right: 20px;
-    input{
+    input {
       margin-right: 10px;
     }
   }
   .gradient-generator {
     width: 300px;
-    margin-right: 5px;
+    margin-left: 5px;
     //display: inline-block;
+  }
+}
+
+.copy-scss-area {
+  display: inline-block;
+  position: relative;
+  .text-copied {
+    display: flex;
+    position: absolute;
+    top: -50px;
+    left: -12px;
+    width: 130px;
+    height: 38px;
+    background: $copied-bg;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+  }
+}
+
+.loading {
+  background: transparentize($loading-bg, 0.2);
+  //background: green;
+  height: 66vh;
+  width: calc(100% - 15px);
+  position: absolute;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  .loadingare {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .loading-icons {
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      span {
+        display: block;
+        margin: 0 auto;
+      }
+
+      span[class*="l-"] {
+        display: inline-block;
+        margin: 12px 2px;
+        -webkit-animation: loader 4s infinite;
+        -webkit-animation-timing-function: cubic-bezier(0, 1.92, 1,-0.48);
+        -webkit-animation-fill-mode: both;
+        -moz-animation: loader 4s infinite;
+        -moz-animation-timing-function: cubic-bezier(0, 1.92, 1,-0.48);
+        -moz-animation-fill-mode: both;
+        -ms-animation: loader 4s infinite;
+        -ms-animation-timing-function: cubic-bezier(0, 1.92, 1,-0.48);
+        -ms-animation-fill-mode: both;
+        animation: loader 4s infinite;
+        animation-timing-function: cubic-bezier(0, 1.92, 1,-0.48);
+        animation-fill-mode: both;
+      }
+
+      span.l-1 {
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s;
+        -ms-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+      }
+      span.l-2 {
+        -webkit-animation-delay: 0.8s;
+        animation-delay: 0.8s;
+        -ms-animation-delay: 0.8s;
+        -moz-animation-delay: 0.8s;
+      }
+      span.l-3 {
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+        -ms-animation-delay: 0.6s;
+        -moz-animation-delay: 0.6s;
+      }
+      span.l-4 {
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+        -ms-animation-delay: 0.4s;
+        -moz-animation-delay: 0.4s;
+      }
+      span.l-5 {
+        -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
+        -ms-animation-delay: 0.2s;
+        -moz-animation-delay: 0.2s;
+      }
+      span.l-6 {
+        -webkit-animation-delay: 0;
+        animation-delay: 0;
+        -ms-animation-delay: 0;
+        -moz-animation-delay: 0;
+      }
+
+    }
   }
 }
