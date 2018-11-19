@@ -1,7 +1,7 @@
-var client = (function($){
+var client = (function ($) {
     var currentTab = 0, map = {};
 
-    $( document ).ready(function() {
+    $(document).ready(function () {
         var uploadBtn = $('button[rel="upload"]'),
             nextBtn = $('button[rel="next"]'),
             prevBtn = $('button[rel="prev"]'),
@@ -9,10 +9,10 @@ var client = (function($){
             generateBtn = $('button[rel="generate"]'),
             form = $('form[rel="uploadForm"]');
 
-        $('input[name="sampleFile"]').on('change', function(){
-            if($(this).val()) {
+        $('input[name="sampleFile"]').on('change', function () {
+            if ($(this).val()) {
                 uploadBtn.show();
-            }else{
+            } else {
                 uploadBtn.hide();
             }
         });
@@ -36,8 +36,8 @@ var client = (function($){
 
                     var html = '', element = $('div[rel="level' + currentTab + '"]');
 
-                    data.forEach(function(fileName){
-                        if(currentTab === 0) {
+                    data.forEach(function (fileName) {
+                        if (currentTab === 0) {
                             html +=
                                 '<div class="code-block" rel="field" data-value="' + fileName + '">' +
                                 '<label>$' + fileName + ': </label>' +
@@ -49,27 +49,31 @@ var client = (function($){
                                 '</select>' +
                                 '<input data-ctrl="color" rel="1" type="text" style="display: none" class="form-control demo">' +
                                 '<input data-ctrl="color" rel="2" type="text" style="display: none" class="form-control demo">' +
-                                '<div data-ctrl="color" rel="3" data-value="' + fileName + '" style="display: none">' +
-                                    '<input data-ctrl="gradient" type="radio" checked="checked" rel="' + fileName + '-linear-gradient" name="' + fileName + 'gradient"> Linear ' +
-                                    '<input data-ctrl="gradient" type="radio" rel="' + fileName + '-radial-gradient" name="' + fileName + 'gradient"> Radial ' +
-                                    '<div data-ctrl="gradient-type" rel="' + fileName + '-linear-gradient" style="display: none;"></div>'+
-                                    '<div data-ctrl="gradient-type" rel="' + fileName + '-radial-gradient" style="display: none;"></div>'+
-                                    '<input rel="gradientValue" type="text">'+
+                                '<div data-ctrl="color" class="gradient-section" rel="3" data-value="' + fileName + '" style="display: none">' +
+                                '<div class="gradient-select">' +
+                                '<input data-ctrl="gradient" type="radio" checked="checked" rel="' + fileName + '-linear-gradient" name="' + fileName + 'gradient"> Linear' +
+                                '</div>' +
+                                '<div class="gradient-select">' +
+                                '<input data-ctrl="gradient" type="radio" rel="' + fileName + '-radial-gradient" name="' + fileName + 'gradient"> Radial ' +
+                                '</div>' +
+                                '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-linear-gradient" style="display: none;"></div>' +
+                                '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-radial-gradient" style="display: none;"></div>' +
+                                '<input rel="gradientValue" type="text">' +
                                     //'<div class="ra-btn">' +
                                     //    '<input data-ctrl="gradient" type="radio" checked="checked" rel="linear" name="gradient"> Linear ' +
                                     //    '<input data-ctrl="gradient" type="radio" rel="radial" name="gradient"> Radial ' +
                                     //'</div>' +
                                     //'<div data-ctrl="gradient-type" class="grad_ex" rel="linear" style="display: none"><input type="text" class="details" placeholder="0"></div>' +
                                     //'<div data-ctrl="gradient-type" class="grad_ex" rel="radial" style="display: none"></div>' +
-                                '</div>'+
-                                '<input data-ctrl="color" rel="4" type="text" style="display: none"/>' +
-                                '</div>';
-                        }else{
+                                '</div>' +
+                                '<input data-ctrl="color" rel="4" type="text" placeholder="path/image.jpg" style="display: none"/>' +
+                                ';</div>';
+                        } else {
                             html += '<div class="code-block" rel="field" data-value="' + fileName + '">' +
                                 '<label>$' + fileName + ' :</label>' +
                                 '<select>';
-                            for(var scssVar in map[currentTab - 1]){
-                                if(map[currentTab - 1].hasOwnProperty(scssVar)){
+                            for (var scssVar in map[currentTab - 1]) {
+                                if (map[currentTab - 1].hasOwnProperty(scssVar)) {
                                     html += '<option value="' + scssVar + '">' + scssVar + '</option>';
                                 }
                             }
@@ -79,8 +83,8 @@ var client = (function($){
 
                     element.html(html);
 
-                    if(currentTab === 0) {
-                        
+                    if (currentTab === 0) {
+
                         element.find('input[rel="1"]').minicolors({
                             control: 'hue',
                             defaultValue: '#ff6161',
@@ -99,7 +103,7 @@ var client = (function($){
                             theme: 'default'
                         });
 
-                        $.each(element.find('div[rel="3"]'), function(i, v){
+                        $.each(element.find('div[rel="3"]'), function (i, v) {
                             var val = $(v).attr('data-value');
                             var lgp = new Grapick({el: $(v).find('div[rel="' + val + '-linear-gradient"]')[0]});
 
@@ -114,7 +118,10 @@ var client = (function($){
 
                             $(v).find('input[rel="gradientValue"]').val(lgp.getValue());
 
-                            var rgp = new Grapick({el: $(v).find('div[rel="' + val + '-radial-gradient"]')[0], type: 'radial'});
+                            var rgp = new Grapick({
+                                el: $(v).find('div[rel="' + val + '-radial-gradient"]')[0],
+                                type: 'radial'
+                            });
 
                             // Handlers are color stops
                             rgp.addHandler(0, 'red');
@@ -128,7 +135,7 @@ var client = (function($){
                             });
                         });
 
-                        element.find('input[data-ctrl="gradient"]').on('click', function(){
+                        element.find('input[data-ctrl="gradient"]').on('click', function () {
                             $(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
                             element.find('div[rel="' + $(this).attr('rel') + '"]').show();
                         });
@@ -181,15 +188,15 @@ var client = (function($){
             });
         });
 
-        nextBtn.on('click', function(){
+        nextBtn.on('click', function () {
             _onNext();
         });
 
-        prevBtn.on('click', function(){
+        prevBtn.on('click', function () {
             _onPrev();
         });
 
-        copyBtn.on('click', function(){
+        copyBtn.on('click', function () {
             //var copyText = $('div[rel="level2"]').text()
             //console.log(copyText);
             //copyText.select();
@@ -206,19 +213,19 @@ var client = (function($){
             //alert("Copied the text: " + copySCSS.val);
         });
 
-        generateBtn.on('click', function(){
+        generateBtn.on('click', function () {
             _onNext();
 
             var html = '';
-            for(var level in map){
-                if(map.hasOwnProperty(level)){
+            for (var level in map) {
+                if (map.hasOwnProperty(level)) {
                     var l = parseInt(level, 10);
                     html += '<div class="code-block"><span>//--------------------- Level ' + (l + 1) + ' ---------------------- </span></div>';
-                    for(var scssVar in map[level]){
-                        if(map[level].hasOwnProperty(scssVar)){
+                    for (var scssVar in map[level]) {
+                        if (map[level].hasOwnProperty(scssVar)) {
                             html += '<div class="code-block">' +
                                 '<span>$' + scssVar + ': </span>' +
-                                '<span>' + (l !== 0 ? '$' : '') +  map[level][scssVar].value + '; </span>' +
+                                '<span>' + (l !== 0 ? '$' : '') + map[level][scssVar].value + '; </span>' +
                                 '</div>';
                         }
                     }
@@ -231,8 +238,9 @@ var client = (function($){
         _fixStepIndicator(0);
         _showHideButtons(false);
 
-        function _onNext(){
-            var element = _getCurrentTab();;
+        function _onNext() {
+            var element = _getCurrentTab();
+            ;
             _saveScssVariables(element);
             element.hide();
             currentTab++;
@@ -244,7 +252,7 @@ var client = (function($){
             $('strong[rel="tab"]').html(currentTab + 1);
         }
 
-        function _onPrev(){
+        function _onPrev() {
             var element = _getCurrentTab();
             element.hide();
             currentTab--;
@@ -255,12 +263,12 @@ var client = (function($){
             $('strong[rel="tab"]').html(currentTab + 1);
         }
 
-        function _getCurrentTab(){
+        function _getCurrentTab() {
             return $('div[rel="level' + currentTab + '"]');
         }
-        
-        function _showHideButtons(isUploaded){
-            switch(currentTab) {
+
+        function _showHideButtons(isUploaded) {
+            switch (currentTab) {
                 case 0:
                     form.show();
                     if (isUploaded) {
@@ -289,38 +297,44 @@ var client = (function($){
             }
         }
 
-        function _saveScssVariables(element){
-            if(!map[currentTab]){
+        function _saveScssVariables(element) {
+            if (!map[currentTab]) {
                 map[currentTab] = {};
             }
-            $.each(element.find('div[rel="field"]'), function(i, v){
+            $.each(element.find('div[rel="field"]'), function (i, v) {
                 var fileName = $(v).attr('data-value');
-                if(currentTab === 0){
+                if (currentTab === 0) {
                     var s = $(v).find('select').val();
-                    switch (s){
+                    switch (s) {
                         case '3':
-                            map[currentTab][fileName] = {'type' : s, 'value' : $(v).find('input[rel="gradientValue"]').val()};
+                            map[currentTab][fileName] = {
+                                'type': s,
+                                'value': $(v).find('input[rel="gradientValue"]').val()
+                            };
                             break;
                         case '4':
-                            map[currentTab][fileName] = {'type' : s, 'value' : 'url("' + $(v).find('input[rel="' + s + '"]').val() + '")'};
+                            map[currentTab][fileName] = {
+                                'type': s,
+                                'value': 'url("' + $(v).find('input[rel="' + s + '"]').val() + '")'
+                            };
                             break;
                         default:
-                            map[currentTab][fileName] = {'type' : s, 'value' : $(v).find('input[rel="' + s + '"]').val()};
+                            map[currentTab][fileName] = {'type': s, 'value': $(v).find('input[rel="' + s + '"]').val()};
                             break;
                     }
                     //map[currentTab][fileName] = $(v).find('input').val();
-                }else{
-                    map[currentTab][fileName] =  {'value' : $(v).find('select').val()};
+                } else {
+                    map[currentTab][fileName] = {'value': $(v).find('select').val()};
                 }
             });
             console.log(map);
         }
 
-        function _showScssVariables(element){
+        function _showScssVariables(element) {
             var html = '';
-            for(var key in map[currentTab]){
-                if(map[currentTab].hasOwnProperty(key)){
-                    if(currentTab === 0) {
+            for (var key in map[currentTab]) {
+                if (map[currentTab].hasOwnProperty(key)) {
+                    if (currentTab === 0) {
                         html +=
                             '<div class="code-block" rel="field" data-value="' + key + '">' +
                             '<label>$' + key + ': </label>' +
@@ -335,24 +349,24 @@ var client = (function($){
                             '<div data-ctrl="color" rel="3" data-value="' + key + '" style="display: none">' +
                             '<input data-ctrl="gradient" type="radio" checked="checked" rel="' + key + '-linear-gradient" name="' + key + 'gradient"> Linear ' +
                             '<input data-ctrl="gradient" type="radio" rel="' + key + '-radial-gradient" name="' + key + 'gradient"> Radial ' +
-                            '<div data-ctrl="gradient-type" rel="' + key + '-linear-gradient" style="display: none;"></div>'+
-                            '<div data-ctrl="gradient-type" rel="' + key + '-radial-gradient" style="display: none;"></div>'+
-                            '<input rel="gradientValue" type="text">'+
+                            '<div data-ctrl="gradient-type" rel="' + key + '-linear-gradient" style="display: none;"></div>' +
+                            '<div data-ctrl="gradient-type" rel="' + key + '-radial-gradient" style="display: none;"></div>' +
+                            '<input rel="gradientValue" type="text">' +
                                 //'<div class="ra-btn">' +
                                 //    '<input data-ctrl="gradient" type="radio" checked="checked" rel="linear" name="gradient"> Linear ' +
                                 //    '<input data-ctrl="gradient" type="radio" rel="radial" name="gradient"> Radial ' +
                                 //'</div>' +
                                 //'<div data-ctrl="gradient-type" class="grad_ex" rel="linear" style="display: none"><input type="text" class="details" placeholder="0"></div>' +
                                 //'<div data-ctrl="gradient-type" class="grad_ex" rel="radial" style="display: none"></div>' +
-                            '</div>'+
+                            '</div>' +
                             '<input data-ctrl="color" rel="4" type="text" style="display: none"/>' +
                             '</div>';
-                    }else{
+                    } else {
                         html += '<div class="code-block" rel="field" data-value="' + key + '">' +
                             '<label>$' + key + ' :</label>' +
                             '<select>';
-                        for(var scssVar in map[currentTab - 1]){
-                            if(map[currentTab - 1].hasOwnProperty(scssVar)){
+                        for (var scssVar in map[currentTab - 1]) {
+                            if (map[currentTab - 1].hasOwnProperty(scssVar)) {
                                 html += '<option value="' + scssVar + '">' + scssVar + '</option>';
                             }
                         }
@@ -363,7 +377,7 @@ var client = (function($){
 
             element.html(html);
 
-            if(currentTab === 0) {
+            if (currentTab === 0) {
 
                 element.find('input[rel="1"]').minicolors({
                     control: 'hue',
@@ -383,7 +397,7 @@ var client = (function($){
                     theme: 'default'
                 });
 
-                $.each(element.find('div[rel="3"]'), function(i, v){
+                $.each(element.find('div[rel="3"]'), function (i, v) {
                     var val = $(v).attr('data-value');
                     var lgp = new Grapick({el: $(v).find('div[rel="' + val + '-linear-gradient"]')[0]});
 
@@ -408,7 +422,7 @@ var client = (function($){
                     });
                 });
 
-                element.find('input[data-ctrl="gradient"]').on('click', function(){
+                element.find('input[data-ctrl="gradient"]').on('click', function () {
                     $(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
                     element.find('div[rel="' + $(this).attr('rel') + '"]').show();
                 });
@@ -457,12 +471,12 @@ var client = (function($){
                 element.find('select[rel="field-value"]').trigger('change');
             }
 
-            for(var key in map[currentTab]) {
+            for (var key in map[currentTab]) {
                 if (map[currentTab].hasOwnProperty(key)) {
-                    if(currentTab === 0){
+                    if (currentTab === 0) {
 
-                    }else{
-                        if(map[currentTab][key] && map[currentTab][key].value) {
+                    } else {
+                        if (map[currentTab][key] && map[currentTab][key].value) {
                             element.find('div[data-value="' + key + '"]').find('select').val(map[currentTab][key].value);
                         }
                     }
@@ -481,7 +495,7 @@ var client = (function($){
         }
 
         //for normal color picker
-        $('.demo').each( function() {
+        $('.demo').each(function () {
             $(this).minicolors({
                 control: $(this).attr('data-control') || 'hue',
                 defaultValue: $(this).attr('data-defaultValue') || '',
@@ -492,10 +506,10 @@ var client = (function($){
                 opacity: $(this).attr('data-opacity'),
                 position: $(this).attr('data-position') || 'bottom',
                 swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
-                change: function(value, opacity) {
-                    if( !value ) return;
-                    if( opacity ) value += ', ' + opacity;
-                    if( typeof console === 'object' ) {
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
                         console.log(value);
                     }
                 },

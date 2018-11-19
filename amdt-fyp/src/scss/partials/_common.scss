@@ -1,9 +1,13 @@
 body, .body, BODY {
   background: $body-bg-color;
+  color: $body-color;
   font-family: $primary-font;
+  height: 100vh;
+  box-shadow: 0px 0 0 0.9em $main-light-blue;
+  border-radius: .8em;
 }
 
-pre{
+pre {
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal
@@ -11,6 +15,14 @@ pre{
 
 nav {
   display: flex;
+}
+
+select {
+  background-color: $form-input-bg;
+  option{
+    background-color: $form-input-bg;
+  }
+  border: none;
 }
 
 .step {
@@ -26,7 +38,7 @@ nav {
     border: 1px solid;
     border-color: $tab-color;
     color: $tab-color;
-    &:before{
+    &:before {
       content: '';
       width: calc(50% - 25px);
       height: 1px;
@@ -35,7 +47,7 @@ nav {
       border-color: $tab-color;
       position: absolute;
     }
-    &:after{
+    &:after {
       content: '';
       width: calc(50% - 25px);
       height: 1px;
@@ -52,77 +64,139 @@ nav {
     color: $tab-color;
     margin-top: 10px;
   }
-  &.active{
-    .icon, .details-area{
+  &.active {
+    .icon, .details-area {
       border-color: $tab-act-color;
       color: $tab-act-color;
-      &:before, &:after{
+      &:before, &:after {
         border-color: $tab-act-color;
       }
     }
   }
-  &:first-child{
-    .icon{
-      &:before{
+  &:first-child {
+    .icon {
+      &:before {
         display: none;
       }
     }
   }
-  &:last-child{
-    .icon{
-      &:after{
+  &:last-child {
+    .icon {
+      &:after {
         display: none;
       }
     }
   }
 }
 
-.editor-area{
+.editor-area {
   padding: 15px;
   border: 1px solid;
   border-color: $tab-color;
   border-radius: 10px;
-  background: lighten($tab-color, 10);
-  height: 70vh;
+  background: $editor-area;
+  height: 66vh;
+  max-height: 66vh;
+  overflow: auto;
+  &.last-panel {
+    height: 70vh;
+  }
 }
 
-.photoshop{
+.steps-area {
+  height: 66vh;
+  display: flex;
+  align-items: center;
+  color: $information-color;
+  .infor-content {
+    ul {
+      padding-left: 20px;
+    }
+  }
+}
+
+.photoshop {
   background: $photoshop-bg;
   color: $photoshop-color;
   border-color: $photoshop-color;
 }
-.illustrator{
+
+.illustrator {
   background: $illustrator-bg;
   color: $illustrator-color;
   border-color: $illustrator-bg;
 }
 
-.photoshop, .illustrator{
+.photoshop, .illustrator {
   padding: 5px 9px 8px;
   border-radius: 4px;
   border: 1px solid;
 }
 
-.multy-files{
+.multy-files {
   width: 210px;
   line-height: 30px;
 }
-.tab{
+
+.tab {
   display: none;
 }
-.code-block{
+
+.code-block {
   font-family: $secondary-font;
-  .dropdown-toggle{
+  display: flex;
+  margin-bottom: 2px;
+
+  select {
+    margin-right: 5px;
+    height: 29px;
+    color: $form-select-color;
+  }
+  .dropdown-toggle {
     background: none;
     border: none;
-    &:focus{
+    &:focus {
       outline: none;
     }
   }
-  .dropdown-menu{
+  .dropdown-menu {
     border: none;
   }
-  input{
+  input {
     border: none;
+    border-radius: 3px;
+    height: 29px;
+    background: $form-input-bg;
+    padding: 0 5px 0 5px;
+    color: $form-input-color;
+  }
+}
+
+.copy-scss {
+  background-color: $copy-scss-bg;
+  border-color: $copy-scss-bg;
+  color: $copy-scss-color;
+  &:hover {
+    background-color: darken($copy-scss-bg, 5);
+    border-color: darken($copy-scss-bg, 5);
+    color: $copy-scss-color;
+  }
+}
+
+.gradient-section {
+  display: inline-flex;
+  .gradient-select{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    margin-right: 20px;
+    input{
+      margin-right: 10px;
+    }
+  }
+  .gradient-generator {
+    width: 300px;
+    margin-right: 5px;
+    //display: inline-block;
   }
 }

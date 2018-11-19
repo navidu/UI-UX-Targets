@@ -2,11 +2,18 @@
 $black: #000000;
 $white: #ffffff;
 $primary-gray: #dddddd;
+$secondary-gray: #666d89;
 $primary-red: #f35b3f;
 $primary-dark-blue: #001d26;
 $primary-light-blue: #00c8ff;
 $primary-dark-orange: #261300;
 $primary-light-orange: #ff7c00;
+$primary-yellow: #fff38f;
+
+$main-light-blue: #3f81f3;
+$main-dark-blue: #001436;
+
+$level-3-dark-blue: #3f4d69;
 
 //not change
 $facebook:#3b579d;
@@ -28,12 +35,23 @@ $break-lg: 992px;
 $break-xl: 1200px;
 
 //second level
-$body-bg-color: $white;
+$body-bg-color: $main-dark-blue;
+$body-color: $white;
 
 $tab-color: $primary-gray;
 $tab-act-color: $primary-red;
+
+$editor-area: $level-3-dark-blue;
 
 $photoshop-bg: $primary-dark-blue;
 $photoshop-color: $primary-light-blue;
 $illustrator-bg: $primary-dark-orange;
 $illustrator-color: $primary-light-orange;
+
+$information-color: $secondary-gray;
+$copy-scss-color: $white;
+$copy-scss-bg: $primary-red;
+
+$form-input-bg: transparentize($white, 0.9);
+$form-input-color: $primary-yellow;
+$form-select-color: $white;

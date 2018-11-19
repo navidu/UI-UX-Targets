@@ -40,11 +40,11 @@ gulp.task('hello', function(){
 gulp.task('scss', function(){
     //take vendor css
     var vendorStreamCss = gulp.src([
+        'node_modules/@fortawesome/fontawesome-free/scss/v4-shims.scss',
         'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss',
         'node_modules/@fortawesome/fontawesome-free/scss/brands.scss',
         'node_modules/@fortawesome/fontawesome-free/scss/regular.scss',
         'node_modules/@fortawesome/fontawesome-free/scss/solid.scss',
-        'node_modules/@fortawesome/fontawesome-free/scss/v4-shims.scss',
         'node_modules/bootstrap/scss/bootstrap.scss',
         'node_modules/@claviska/jquery-minicolors/jquery.minicolors.css',
         'node_modules/grapick/dist/grapick.min.css'
@@ -146,6 +146,7 @@ gulp.task('icons', function() {
 gulp.task('watch', function(){
     gulp.watch('src/scss/**/*.scss', ['scss']);
     gulp.watch('src/html/*.html', ['html']);
+    gulp.watch('src/js/*.js', ['js']);
 });
 
 //clear the old dist folder

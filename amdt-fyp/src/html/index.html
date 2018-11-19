@@ -2,47 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Theme Generator</title>
+    <title>App - Blue Shadow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--favicon icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon.ico">
+    <link rel="manifest" href="img/favicon//site.webmanifest">
+    <link rel="mask-icon" href="img/favicon//safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!--/.favicon icons-->
+
+    <!--styles-->
+    <!--styles-->
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .grad_ex {
-            width: 200px;
-            height: 20px;
-            margin-bottom: 32px;
-        }
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!--/.styles-->
+    <!--<style>-->
+        <!--.grad_ex {-->
+            <!--width: 200px;-->
+            <!--height: 20px;-->
+            <!--margin-bottom: 32px;-->
+        <!--}-->
 
-        .details{
-            position: absolute;
-            width: 30px;
-            right: 0;
-            margin-right: -40px;
-        }
+        <!--.details {-->
+            <!--position: absolute;-->
+            <!--width: 30px;-->
+            <!--right: 0;-->
+            <!--margin-right: -40px;-->
+        <!--}-->
 
-    </style>
+    <!--</style>-->
 </head>
 <body>
 <div id="variableForm">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 step">
+            <div class="col-lg-3 step">
                 <div class="icon">
-                    <i class="fa fa-dice-one"></i>
+                    <i class="fas fa-dice-one"></i>
                 </div>
                 <div class="details-area">
                     Create level 1 variables
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 step">
+            <div class="col-lg-3 step">
                 <div class="icon">
-                    <i class="fa fa-dice-two"></i>
+                    <i class="fas fa-dice-two"></i>
                 </div>
                 <div class="details-area">
                     Create level 2 variables
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 step">
+            <div class="col-lg-3 step">
                 <div class="icon">
                     <i class="fab fa-sass"></i>
                 </div>
@@ -52,40 +68,88 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+            <div class="col-lg-9 mb-3">
                 <form rel='uploadForm'>
-                    Choose your <span class="photoshop">Adobe Photoshop</span> or <span class="illustrator">Adobe Illustrator</span> files from level <strong rel="tab">1</strong> folder.
-                    <input name="sampleFile" class="input-button multy-files" type="file" multiple webkitdirectory="" directory="">
-                    <button class="btn btn-info" rel="upload" type="button" style="display: none;">Upload Files</button>
+                    Choose your <span class="photoshop">Ps</span> or <span class="illustrator">Ai</span> files from
+                    level <strong rel="tab">1</strong> folder.
+                    <input name="sampleFile" class="input-button multy-files" type="file" multiple webkitdirectory=""
+                           directory="">
+                    <button class="btn btn-info float-right" rel="upload" type="button" style="display: none;">Upload
+                        Files
+                    </button>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="editor-area" rel="level0">
+                    <div class="col-lg-9">
+                        <div class="editor-area mb-3" rel="level0">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="steps-area">
+                        <div class="infor-content">
+                            <h3>Welcome to the Blue Shadow App!</h3>
+                            <h6>Fallow these steps to generate your SCSS color variable file!</h6>
+                            <ul>
+                                <li>Choose your .psd files or .ai files from the <strong>level 1</strong> folder.</li>
+                                <li>Click enabled <strong>"Upload Files"</strong> button on right top corner to upload
+                                    your
+                                    files to the application.
+                                </li>
+                                <li>Click enabled <strong>"Next"</strong> button on left bottom corner go to the level
+                                    2.
+                                </li>
+                                <!--<br>-->
+                                <!--<li>Now you have your level 1 file names as the variables.</li>-->
+                                <!--<li>Assign the values of your .psd files or .ai files to this variables. You can assign-->
+                                    <!--HEX/RGBA/Linear Gradient/Radial Gradient/URL using the drop down of each-->
+                                    <!--variable.<br>-->
+                                    <!--<i>Please check the correct values which you set on your .psd or .ai files. Until-->
+                                        <!--your-->
+                                        <!--project look will crash. </i>-->
+                                <!--</li>-->
+                                <br>
+                                <!--<li>Choose your .psd files or .ai files from the <strong>level 2</strong> folder.</li>-->
+                                <!--<li>Click enabled "Upload Files" button on right top corner to upload your files to the-->
+                                <!--application.-->
+                                <!--</li>-->
+                                <!--<br>-->
+                                <!--<li>Now you have your level 2 file names as the variables.</li>-->
+                                <!--<li>Assign the values of level 1 files to this variables. You can assign the level 1 values using-->
+                                <!--the drop down of each variable.<br>-->
+                                <!--<i>Please check the correct variable which you set on level 1. Until your-->
+                                <!--project look will crash. </i>-->
+                                <!--</li>-->
+                                <!--<li>Click "Generate SCSS" button on left bottom corner go to the last level</li>-->
+                                <!--<br>-->
+                            </ul>
+                            <!--<h3>Your SCSS color variables file successfully generated!</h3>-->
+                            <!--<h6>Click <strong>"Copy SCSS"</strong> button on left bottom corner to copy this file.</h6>-->
+                            <!--<h1 style="text-align: center">Thank You!</h1>-->
+                        </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="editor-area" rel="level1" style="display: none">
+                    <div class="col-lg-9">
+                        <div class="editor-area mb-3" rel="level1" style="display: none">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="editor-area" rel="level2" style="display: none">
+                    <div class="col-lg-9">
+                        <div class="editor-area mb-3 last-panel" rel="level2" style="display: none">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 pull-right">
+                    <div class="col-lg-9 pull-right">
                         <button class="btn btn-success" rel="next">Next</button>
-                        <button class="btn btn-light" rel="prev" style="display: none">Previous</button>
-                        <button class="btn btn-primary" rel="generate" style="display: none">Generate</button>
-                        <button class="btn btn-info" rel="copy">Copy SCSS</button>
+                        <button class="btn btn-light mr-2" rel="prev" style="display: none">Previous</button>
+                        <button class="btn btn-success" rel="generate" style="display: none">Generate SCSS</button>
+                        <button class="btn btn-light copy-scss" rel="copy">Copy SCSS</button>
                     </div>
                 </div>
             </div>
@@ -100,9 +164,9 @@
     <!--<div class="grad_ex" id="ex3"></div>-->
 
     <!--<div id="controlled">-->
-        <!--<div class="left ex1"></div>-->
-        <!--<div class="right ex2"></div>-->
-        <!--<div class="bottom ex3"></div>-->
+    <!--<div class="left ex1"></div>-->
+    <!--<div class="right ex2"></div>-->
+    <!--<div class="bottom ex3"></div>-->
     <!--</div>-->
 </div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS-->
