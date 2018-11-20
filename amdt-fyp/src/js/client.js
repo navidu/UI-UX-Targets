@@ -65,7 +65,7 @@ var client = (function ($) {
                                 '<label>$' + fileName + ': </label>' +
                                 '<select rel="field-value">' +
                                 '<option value="1">Hex</option>' +
-                                '<option value="2">RGB</option>' +
+                                '<option value="2">RGBA</option>' +
                                 '<option value="3">Gradiant</option>' +
                                 '<option value="4">Url</option>' +
                                 '</select>' +
