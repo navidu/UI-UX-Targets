@@ -97,7 +97,7 @@ var client = (function ($) {
                                 '<select>';
                             for (var scssVar in map[currentTab - 1]) {
                                 if (map[currentTab - 1].hasOwnProperty(scssVar)) {
-                                    html += '<option value="' + scssVar + '">' + scssVar + '</option>';
+                                    html += '<option value="' + scssVar + '">$' + scssVar + '</option>';
                                 }
                             }
                             html += '</select>;</div>';
