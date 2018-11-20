@@ -66,7 +66,7 @@ var client = (function ($) {
                                 '<select rel="field-value">' +
                                 '<option value="1">Hex</option>' +
                                 '<option value="2">RGBA</option>' +
-                                '<option value="3">Gradiant</option>' +
+                                '<option value="3">Gradient</option>' +
                                 '<option value="4">Url</option>' +
                                 '</select>' +
                                 '<input data-ctrl="color" rel="1" type="text" style="display: none" class="form-control demo">' +
