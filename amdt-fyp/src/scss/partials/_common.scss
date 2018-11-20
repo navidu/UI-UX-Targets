@@ -25,6 +25,35 @@ select {
   border: none;
 }
 
+@include respond-to(lg-screen) {
+  #variableForm{
+    display: none;
+  }
+  #cannot-preview{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    .cannot-preview-content{
+      text-align: center;
+      img{
+        width: 10%;
+      }
+      span{
+        display: block;
+      }
+    }
+  }
+}
+@include respond-to(up-lg-screen) {
+  #variableForm{
+    display: block;
+  }
+  #cannot-preview {
+    display: none;
+  }
+}
+
 .step {
   @include center-all;
   flex-direction: column;

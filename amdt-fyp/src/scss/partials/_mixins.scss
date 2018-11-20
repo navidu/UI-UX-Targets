@@ -78,4 +78,9 @@
       @content;
     }
   }
+  @if $media == up-lg-screen {
+    @media only screen and (min-width: $break-lg) {
+      @content;
+    }
+  }
 }
