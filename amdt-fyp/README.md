@@ -1,4 +1,4 @@
-# Blue Shadow App[app.blueshadow.live](http://app.blueshadow.live)
+# Blue Shadow App [app.blueshadow.live](http://app.blueshadow.live)
 ## How to build and run this project
 
 ### Step - 1
