@@ -80,14 +80,7 @@ var client = (function ($) {
                                     '<input data-ctrl="gradient" type="radio" rel="' + fileName + '-radial-gradient" name="' + fileName + 'gradient"> Radial ' +
                                     '<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-radial-gradient" style="display: none;"></div>' +
                                 '</div>' +
-                                //'<div data-ctrl="gradient-type" class="gradient-generator" rel="' + fileName + '-radial-gradient" style="display: none;"></div>' +
                                 '<input rel="gradientValue" type="text">' +
-                                    //'<div class="ra-btn">' +
-                                    //    '<input data-ctrl="gradient" type="radio" checked="checked" rel="linear" name="gradient"> Linear ' +
-                                    //    '<input data-ctrl="gradient" type="radio" rel="radial" name="gradient"> Radial ' +
-                                    //'</div>' +
-                                    //'<div data-ctrl="gradient-type" class="grad_ex" rel="linear" style="display: none"><input type="text" class="details" placeholder="0"></div>' +
-                                    //'<div data-ctrl="gradient-type" class="grad_ex" rel="radial" style="display: none"></div>' +
                                 '</div>' +
                                 '<input data-ctrl="color" rel="4" type="text" placeholder="path/image.jpg" style="display: none"/>' +
                                 ';</div>';
@@ -161,34 +154,9 @@ var client = (function ($) {
                         element.find('input[data-ctrl="gradient"]').on('click', function () {
                             if($(this).is(':checked')) {
                                 $(this).parents('div[data-ctrl="color"]').find('div[data-ctrl="gradient-type"]').hide();
-                                //$(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
                                 element.find('div[rel="' + $(this).attr('rel') + '"]').show();
-                            //}else {
-                            //    $(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
-                                //element.find('div[rel="' + $(this).attr('rel') + '"]').hide();
                             }
                         });
-
-                        //element.find('div[rel="linear"]').gradientPicker({
-                        //    change: function(points, styles) {
-                        //        for (var i = 0; i < styles.length; ++i) {
-                        //            element.find('div[rel="linear"]').css("background-image", styles[i]);
-                        //        }
-                        //    },
-                        //    fillDirection: "45deg",
-                        //    controlPoints: ["green 0%", "yellow 50%", "green 100%"]
-                        //});
-                        //
-                        //element.find('div[rel="radial"]').gradientPicker({
-                        //    type: "radial",
-                        //    change: function(points, styles) {
-                        //        for (var i = 0; i < styles.length; ++i) {
-                        //            element.find('div[rel="radial"]').css("background-image", styles[i]);
-                        //        }
-                        //    },
-                        //    controlPoints: ["blue 0%", "yellow 100%"]
-                        //});
-
                         element.find('select[rel="field-value"]').on('change', function () {
                             var e = $(this), val = e.val(), selected = e.parent('div[rel="field"]').find('[rel="' + val + '"]');
                             e.parent('div[rel="field"]').find('[data-ctrl="color"]').hide();
@@ -226,23 +194,13 @@ var client = (function ($) {
         });
 
         copyBtn.on('click', function () {
-            //var copyText = $('div[rel="level2"]').text()
-            //console.log(copyText);
-            //copyText.select();
-            //document.execCommand("copy");
-            //alert("Copied the text: " + copyText.value);
-
-
             var copySCSS = $("<textarea>");
             $("body").append(copySCSS);
             copySCSS.val($('div[rel="level2"]').text().replace(/;/g, ';\n').replace(/----------------------/g, '---------------------\n')).select();
-            //copySCSS.val($('div[rel="level2"]').text().replace(/----------------------/g, '----------------------\n')).select();
-            //var result = copySCSS.replace(/\;/g,';<br/>');
             document.execCommand("copy");
             copySCSS.remove();
             copiedPopup.show();
             copiedPopup.fadeOut(1000, 'easeInOutQuart');
-            //alert("Copied the text: " + copySCSS.val);
         });
 
         generateBtn.on('click', function () {
@@ -395,12 +353,6 @@ var client = (function ($) {
                             '<div data-ctrl="gradient-type" rel="' + key + '-linear-gradient" style="display: none;"></div>' +
                             '<div data-ctrl="gradient-type" rel="' + key + '-radial-gradient" style="display: none;"></div>' +
                             '<input rel="gradientValue" type="text">' +
-                                //'<div class="ra-btn">' +
-                                //    '<input data-ctrl="gradient" type="radio" checked="checked" rel="linear" name="gradient"> Linear ' +
-                                //    '<input data-ctrl="gradient" type="radio" rel="radial" name="gradient"> Radial ' +
-                                //'</div>' +
-                                //'<div data-ctrl="gradient-type" class="grad_ex" rel="linear" style="display: none"><input type="text" class="details" placeholder="0"></div>' +
-                                //'<div data-ctrl="gradient-type" class="grad_ex" rel="radial" style="display: none"></div>' +
                             '</div>' +
                             '<input data-ctrl="color" rel="4" type="text" style="display: none"/>' +
                             '</div>';
@@ -469,26 +421,6 @@ var client = (function ($) {
                     $(this).parent('div').find('div[data-ctrl="gradient-type"]').hide();
                     element.find('div[rel="' + $(this).attr('rel') + '"]').show();
                 });
-
-                //element.find('div[rel="linear"]').gradientPicker({
-                //    change: function(points, styles) {
-                //        for (var i = 0; i < styles.length; ++i) {
-                //            element.find('div[rel="linear"]').css("background-image", styles[i]);
-                //        }
-                //    },
-                //    fillDirection: "45deg",
-                //    controlPoints: ["green 0%", "yellow 50%", "green 100%"]
-                //});
-                //
-                //element.find('div[rel="radial"]').gradientPicker({
-                //    type: "radial",
-                //    change: function(points, styles) {
-                //        for (var i = 0; i < styles.length; ++i) {
-                //            element.find('div[rel="radial"]').css("background-image", styles[i]);
-                //        }
-                //    },
-                //    controlPoints: ["blue 0%", "yellow 100%"]
-                //});
 
                 element.find('select[rel="field-value"]').on('change', function () {
                     var e = $(this), val = e.val(), selected = e.parent('div[rel="field"]').find('[rel="' + val + '"]');
@@ -559,38 +491,5 @@ var client = (function ($) {
                 theme: 'bootstrap'
             });
         });
-
-        //for gradient color picker
-        //var $ex1 = $(".ex1");
-        //var $ex2 = $(".ex2");
-        //var $ex3 = $(".ex3");
-        //$("#ex1").gradientPicker({
-        //    change: function(points, styles) {
-        //        for (i = 0; i < styles.length; ++i) {
-        //            $ex1.css("background-image", styles[i]);
-        //        }
-        //    },
-        //    fillDirection: "45deg",
-        //    controlPoints: ["green 0%", "yellow 50%", "green 100%"]
-        //});
-        //
-        //$("#ex2").gradientPicker({
-        //    change: function(points, styles) {
-        //        for (i = 0; i < styles.length; ++i) {
-        //            $ex2.css("background-image", styles[i]);
-        //        }
-        //    },
-        //    controlPoints: ["green 0%", "orange 100%"]
-        //});
-        //
-        //$("#ex3").gradientPicker({
-        //    type: "radial",
-        //    change: function(points, styles) {
-        //        for (i = 0; i < styles.length; ++i) {
-        //            $ex3.css("background-image", styles[i]);
-        //        }
-        //    },
-        //    controlPoints: ["blue 0%", "yellow 100%"]
-        //});
     });
 })(jQuery);
