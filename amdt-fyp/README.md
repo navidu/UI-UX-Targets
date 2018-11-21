@@ -12,7 +12,7 @@ npm install
 gulp build
 ```
 ### Step - 3
-- Run the `node` server.
+- Run the `node` server
 ```shell
 node server
 ```
