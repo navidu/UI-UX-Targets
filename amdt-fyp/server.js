@@ -10,7 +10,7 @@ var port = 3000;
 app.use(express.static('dist'));
 
 app.listen(port, function () {
-    console.log('This app is on port ' + port);
+    console.log('This app is on http://localhost:' + port);
 });
 
 app.use(fileUpload());

@@ -11,32 +11,9 @@ var concat = require('gulp-concat');//for css and js
 var uglify = require('gulp-uglify');//for css and js
 var cache = require('gulp-cache');//clear the cache
 var imagemin = require('gulp-imagemin');//for images
-
 var gls = require('gulp-live-server');
 
-//sample task
-gulp.task('hello', function(){
-    console.log('Hello Navidu');
-});
-
-////for css
-//gulp.task('scss', function(){
-//    return gulp.src('src/scss/**/*.scss')
-//        .pipe(sass())
-//        .pipe(gulp.dest('dist/css'))
-//        .pipe(browserSync.reload({
-//            stream:true
-//        }))
-//});
-//
-////for bootstrap
-//gulp.task('getbootstrap', function(){
-//    return gulp.src('node_modules/bootstrap/scss/bootstrap.scss')
-//        .pipe(sass())
-//        .pipe(gulp.dest('dist/css'));
-//});
-
-//foe all css
+//for all css
 gulp.task('scss', function(){
     //take vendor css
     var vendorStreamCss = gulp.src([
@@ -51,7 +28,6 @@ gulp.task('scss', function(){
     ]).pipe(sass())
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest('dist/css'));
-        console.log('src/scss/lib/lib-override.scss');
 
 
     //take app css
@@ -65,7 +41,7 @@ gulp.task('scss', function(){
     return merge(vendorStreamCss, appStreamCss);
 });
 
-//foe all js
+//for all js
 gulp.task('js', function(){
     // Concatenate vendor scripts
     var vendorStreamJs = gulp.src([
@@ -75,7 +51,6 @@ gulp.task('js', function(){
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/@claviska/jquery-minicolors/jquery.minicolors.js',
         'node_modules/grapick/dist/grapick.min.js'
-        //'src/js/lib/**/*.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest('dist/js'));
@@ -83,7 +58,7 @@ gulp.task('js', function(){
     // Concatenate AND minify app sources
     var appStreamJs = gulp.src(['src/js/*.js'])
         .pipe(concat('index.js'))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.reload({
             stream:true
@@ -103,14 +78,6 @@ gulp.task('html', function(){
 
 //for images
 gulp.task('images', function () {
-    //return gulp.src('src/img/**/*.+(png|jpg|gif|svg|ico|xml|webmanifest)')
-    //    .pipe(cache(imagemin({
-    //        // Setting interlaced to true
-    //        interlaced: true
-    //    })))
-    //    .pipe(gulp.dest('dist/img'));
-
-
     var vendorStreamImg = gulp.src([
         'node_modules/@claviska/jquery-minicolors/jquery.minicolors.png'])
         .pipe(cache(imagemin({
@@ -145,8 +112,8 @@ gulp.task('icons', function() {
 //watch function for the changes
 gulp.task('watch', function(){
     gulp.watch('src/scss/**/*.scss', ['scss']);
-    gulp.watch('src/html/*.html', ['html']);
     gulp.watch('src/js/*.js', ['js']);
+    gulp.watch('src/html/*.html', ['html']);
 });
 
 //clear the old dist folder
